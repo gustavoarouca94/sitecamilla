@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site } from '../data/site';
+---
+<Base title="Política de privacidade" description="Como este site trata dados pessoais, em conformidade com a LGPD.">
+  <PageHeader eyebrow="Privacidade" title="Política de privacidade" />
+  <section class="section">
+    <div class="narrow prose">
+      <!-- TODO: revisar com assessoria jurídica antes de publicar. -->
+      <p>Este site pertence a {site.nome} ({site.crm}) e respeita a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).</p>
+      <h2>Quais dados coletamos</h2>
+      <p>O site não possui formulários de cadastro. Ao clicar nos botões de agendamento, você é direcionado ao WhatsApp, e a conversa passa a seguir também a política de privacidade dessa plataforma.</p>
+      <p>Podemos usar ferramentas de medição de audiência (como Google Analytics) que coletam dados de navegação de forma agregada, como páginas visitadas, tipo de dispositivo e cidade aproximada. Esses dados não identificam você pessoalmente e servem apenas para melhorar o conteúdo.</p>
+      <h2>Dados de saúde</h2>
+      <p>Informações clínicas são tratadas somente no contexto do atendimento médico, com sigilo profissional, e nunca por meio deste site.</p>
+      <h2>Seus direitos</h2>
+      <p>Você pode solicitar acesso, correção ou exclusão dos seus dados pessoais pelos nossos canais de contato.</p>
+    </div>
+  </section>
+</Base>

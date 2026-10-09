@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import PostCard from '../../components/PostCard.astro';
+import Cta from '../../components/Cta.astro';
+import { publishedPosts, slugify } from '../../lib/blog';
+const posts = await publishedPosts();
+const categorias = [...new Set(posts.map((p) => p.data.category))];
+---
+<Base title="Blog de pediatria: orientações para famílias" description="Artigos da Dra. Camilla Arouca, pediatra, sobre recém-nascido, amamentação, introdução alimentar, sono, vacinas e saúde da criança, com base em evidências.">
+  <PageHeader eyebrow="Blog" title="Informação de qualidade, em linguagem simples" lead="Para ajudar a sua família a fazer escolhas com clareza e confiança." />
+  <section class="section">
+    <div class="wrap">
+      {categorias.length > 1 && (
+        <nav class="cats" aria-label="Categorias">
+          {categorias.map((c) => <a href={`/blog/categoria/${slugify(c)}/`}>{c}</a>)}
+        </nav>
+      )}
+      <div class="grid grid-3">{posts.map((p) => <PostCard post={p} />)}</div>
+    </div>
+  </section>
+  <Cta />
+</Base>
+<style>
+  .cats { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin-bottom: 2.4rem; }
+  .cats a { font-family: var(--titulo); font-size: 0.85rem; text-decoration: none; padding: 0.5rem 1rem; border: 1px solid var(--linha); border-radius: 999px; background: var(--creme-2); }
+  .cats a:hover { border-color: var(--dourado); }
+</style>

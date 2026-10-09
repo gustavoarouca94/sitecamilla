@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site, whatsappLink } from '../data/site';
+const e = site.endereco;
+---
+<Base title="Contato e agendamento" description="Agende sua consulta com a Dra. Camilla Arouca, pediatra em Piedade, perto de Boa Viagem. Atendimento de segunda a sábado pelo WhatsApp.">
+  <PageHeader eyebrow="Contato" title="Vamos agendar a sua consulta?" lead="O agendamento é feito pelo WhatsApp. Responderemos assim que possível." />
+  <section class="section">
+    <div class="wrap grid grid-3">
+      <div class="card">
+        <span class="dot salvia"></span>
+        <h2>WhatsApp</h2>
+        <p>{site.telefoneExibicao}</p>
+        <a class="btn btn-primary" href={whatsappLink()} target="_blank" rel="noopener">Conversar agora</a>
+      </div>
+      <div class="card">
+        <span class="dot rosa"></span>
+        <h2>Endereço</h2>
+        <p>{e.local}<br />{e.rua && <>{e.rua}<br /></>}{e.bairro}, {e.cidade} – {e.uf}</p>
+        <a class="btn btn-ghost" href={site.googleMaps} target="_blank" rel="noopener">Ver no mapa</a>
+      </div>
+      <div class="card">
+        <span class="dot dourado"></span>
+        <h2>Instagram</h2>
+        <p>Conteúdos sobre o dia a dia da infância.</p>
+        <a class="btn btn-ghost" href={site.instagram} target="_blank" rel="noopener">{site.instagramUser}</a>
+      </div>
+    </div>
+    <div class="narrow">
+      <p class="nota">Por segurança e privacidade, não envie exames ou informações clínicas detalhadas por mensagem antes do atendimento. <strong>Em caso de urgência, procure o pronto-atendimento mais próximo.</strong></p>
+    </div>
+  </section>
+</Base>
+<style>
+  .card h2 { font-size: 1.4rem; }
+  .nota { margin-top: 2.5rem; text-align: center; font-size: 0.95rem; color: var(--texto-suave); }
+</style>

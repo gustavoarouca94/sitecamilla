@@ -1,0 +1,127 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import Cta from '../../components/Cta.astro';
+import { site, whatsappLink } from '../../data/site';
+import { publishedPosts, readingTime, slugify } from '../../lib/blog';
+
+export async function getStaticPaths() {
+  const posts = await publishedPosts();
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post, all: posts } }));
+}
+const { post, all } = Astro.props;
+const { Content } = await render(post);
+const d = post.data;
+const url = new URL(`/blog/${post.id}/`, site.url).href;
+const fmt = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const related = all.filter((p) => p.id !== post.id && p.data.category === d.category).concat(all.filter((p) => p.id !== post.id && p.data.category !== d.category)).slice(0, 3);
+const autora = { '@type': 'Person', '@id': `${site.url}/sobre/#pessoa`, name: site.nome, jobTitle: 'Médica pediatra', url: `${site.url}/sobre/` };
+
+const schema: Record<string, unknown>[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': ['MedicalWebPage', 'BlogPosting'],
+    headline: d.title,
+    description: d.description,
+    url,
+    mainEntityOfPage: url,
+    datePublished: d.pubDate.toISOString(),
+    dateModified: (d.updatedDate ?? d.pubDate).toISOString(),
+    lastReviewed: (d.updatedDate ?? d.pubDate).toISOString().slice(0, 10),
+    author: autora,
+    reviewedBy: autora,
+    publisher: { '@id': `${site.url}/#medica` },
+    image: d.cover ? new URL(d.cover, site.url).href : `${site.url}/img/og-default.jpg`,
+    inLanguage: 'pt-BR',
+    audience: { '@type': 'PeopleAudience', audienceType: 'Pais e cuidadores' },
+    keywords: d.tags.join(', '),
+    citation: d.references,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: `${site.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${site.url}/blog/` },
+      { '@type': 'ListItem', position: 3, name: d.title, item: url },
+    ],
+  },
+];
+if (d.faq.length) {
+  schema.push({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: d.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  });
+}
+---
+<Base title={d.title} description={d.description} image={d.cover} type="article" schema={schema} publishedTime={d.pubDate} modifiedTime={d.updatedDate}>
+  <article>
+    <header class="topo-post">
+      <div class="narrow center">
+        <nav class="migalhas" aria-label="Você está em"><a href="/">Início</a> / <a href="/blog/">Blog</a> / <a href={`/blog/categoria/${slugify(d.category)}/`}>{d.category}</a></nav>
+        <h1>{d.title}</h1>
+        <p class="lead">{d.description}</p>
+        <p class="meta">
+          Por <a href="/sobre/">{site.nome}</a>, pediatra · {site.crm} · {site.rqe}<br />
+          Publicado em <time datetime={d.pubDate.toISOString()}>{fmt.format(d.pubDate)}</time>
+          {d.updatedDate && <> · Revisado em <time datetime={d.updatedDate.toISOString()}>{fmt.format(d.updatedDate)}</time></>}
+          · {readingTime(post)} min de leitura
+        </p>
+      </div>
+      {d.cover && <img class="capa" src={d.cover} alt={d.coverAlt ?? ''} />}
+    </header>
+
+    <div class="narrow prose corpo">
+      <Content />
+
+      {d.faq.length > 0 && (
+        <section class="faq">
+          <h2>Perguntas frequentes</h2>
+          {d.faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+        </section>
+      )}
+
+      {d.references.length > 0 && (
+        <section class="refs">
+          <h2>Referências</h2>
+          <ol>{d.references.map((r) => <li>{r}</li>)}</ol>
+        </section>
+      )}
+
+      <aside class="autora">
+        <img src="/img/elefante.png" alt="" width="56" height="66" />
+        <div>
+          <p><strong>{site.nome}</strong> é pediatra ({site.crm} · {site.rqe}), formada pela UFPE, com residência no Hospital Barão de Lucena. Atende em Piedade, pertinho de Boa Viagem.</p>
+          <p><a href="/sobre/">Conheça a Dra. Camilla</a> · <a href={whatsappLink()} target="_blank" rel="noopener">Agendar consulta</a></p>
+        </div>
+      </aside>
+      <p class="aviso">Este conteúdo é informativo e não substitui a avaliação individual com a pediatra. Em caso de sinais de alerta, procure atendimento de urgência.</p>
+    </div>
+  </article>
+
+  {related.length > 0 && (
+    <section class="section alt">
+      <div class="wrap">
+        <h2 class="center">Continue lendo</h2>
+        <div class="grid grid-3" style="margin-top:1.6rem">{related.map((p) => <PostCard post={p} />)}</div>
+      </div>
+    </section>
+  )}
+  <Cta />
+</Base>
+<style>
+  .topo-post { background: var(--areia-2); padding: clamp(2.5rem, 6vw, 4rem) 0 2.5rem; }
+  .migalhas { font-size: 0.8rem; margin-bottom: 1.5rem; color: var(--texto-suave); }
+  .migalhas a { color: var(--texto-suave); text-decoration: none; }
+  .topo-post h1 { font-size: clamp(1.9rem, 4.2vw, 2.7rem); }
+  .meta { font-size: 0.88rem; color: var(--texto-suave); margin-top: 1.4rem; }
+  .capa { width: min(980px, 100% - 2.5rem); margin: 2rem auto 0; border-radius: var(--raio); aspect-ratio: 16 / 8; object-fit: cover; }
+  .corpo { padding: clamp(2.5rem, 5vw, 3.5rem) 0 3rem; }
+  .refs ol { font-size: 0.9rem; color: var(--texto-suave); }
+  .autora { display: flex; gap: 1.2rem; align-items: flex-start; background: var(--creme-2); border: 1px solid var(--linha); border-radius: var(--raio); padding: 1.5rem; margin-top: 3rem; font-size: 0.97rem; }
+  .autora img { width: 52px; flex-shrink: 0; }
+  .autora p:last-child { margin: 0; }
+  .aviso { font-size: 0.85rem; color: var(--texto-suave); margin-top: 1.5rem; }
+</style>

@@ -1,0 +1,18 @@
+---
+import { whatsappLink, site } from '../data/site';
+interface Props { titulo?: string; texto?: string }
+const { titulo = 'Vamos conversar sobre o cuidado do seu filho?', texto = `Atendimento ${site.horarios.toLowerCase()}, em Piedade, pertinho de Boa Viagem.` } = Astro.props;
+---
+<section class="cta">
+  <div class="narrow center">
+    <img src="/img/elefante.png" alt="" width="74" height="86" loading="lazy" />
+    <h2>{titulo}</h2>
+    <p class="lead">{texto}</p>
+    <a class="btn btn-primary" href={whatsappLink()} target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+  </div>
+</section>
+<style>
+  .cta { background: var(--areia); padding: clamp(3.5rem, 8vw, 5.5rem) 0; }
+  .cta img { width: 70px; margin: 0 auto 1rem; }
+  .cta .lead { margin-bottom: 1.8rem; }
+</style>

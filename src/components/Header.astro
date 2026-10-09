@@ -1,0 +1,53 @@
+---
+import { nav, whatsappLink } from '../data/site';
+const path = Astro.url.pathname;
+const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+---
+<header class="topo">
+  <div class="wrap barra">
+    <a href="/" class="marca" aria-label="Dra. Camilla Arouca, pediatra — página inicial">
+      <img src="/img/elefante.png" alt="" width="40" height="47" />
+      <span class="nome"><span class="assinatura">Camilla Arouca</span><span class="tag">Pediatra</span></span>
+    </a>
+    <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-hidden="true" />
+    <label for="menu-toggle" class="menu-btn" aria-label="Abrir menu"><span></span><span></span><span></span></label>
+    <nav aria-label="Principal">
+      <ul>
+        {nav.map((item) => (
+          <li><a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a></li>
+        ))}
+      </ul>
+      <a class="btn btn-primary agendar" href={whatsappLink()} target="_blank" rel="noopener">Agendar consulta</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .topo { position: sticky; top: 0; z-index: 50; background: rgba(250, 246, 242, 0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--linha); }
+  .barra { display: flex; align-items: center; justify-content: space-between; min-height: 78px; gap: 1rem; }
+  .marca { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+  .marca img { width: 40px; height: auto; }
+  .nome { display: flex; flex-direction: column; line-height: 1; }
+  .assinatura { font-family: var(--script); font-size: 1.65rem; color: #c49a92; }
+  .tag { font-family: var(--titulo); font-size: 0.62rem; letter-spacing: 0.42em; text-transform: uppercase; color: var(--salvia-escura); margin-top: 0.25rem; padding-left: 0.15rem; }
+  nav { display: flex; align-items: center; gap: 1.6rem; }
+  nav ul { list-style: none; display: flex; gap: 1.4rem; margin: 0; padding: 0; }
+  nav ul a { font-family: var(--titulo); font-size: 0.92rem; text-decoration: none; color: var(--texto); padding: 0.3rem 0; border-bottom: 1.5px solid transparent; }
+  nav ul a:hover, nav ul a[aria-current='page'] { border-color: var(--rosa); color: var(--cafe); }
+  .agendar { padding: 0.7rem 1.2rem; font-size: 0.85rem; }
+  .menu-toggle, .menu-btn { display: none; }
+
+  @media (max-width: 960px) {
+    .menu-btn { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; }
+    .menu-btn span { width: 24px; height: 2px; background: var(--cafe); border-radius: 2px; transition: transform 0.2s; }
+    nav { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 1rem;
+      background: var(--creme); padding: 1.2rem 1.25rem 1.6rem; border-bottom: 1px solid var(--linha); display: none; }
+    nav ul { flex-direction: column; gap: 0.2rem; }
+    nav ul a { display: block; padding: 0.7rem 0; font-size: 1.05rem; border: 0; }
+    .agendar { justify-content: center; }
+    .menu-toggle:checked ~ nav { display: flex; }
+    .menu-toggle:checked + .menu-btn span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle:checked + .menu-btn span:nth-child(2) { opacity: 0; }
+    .menu-toggle:checked + .menu-btn span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  }
+</style>

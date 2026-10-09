@@ -1,0 +1,140 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PostCard from '../components/PostCard.astro';
+import Cta from '../components/Cta.astro';
+import { site, whatsappLink } from '../data/site';
+import retrato from '../assets/camilla-retrato.jpg';
+import consultorio from '../assets/consultorio.jpg';
+import parquinho from '../assets/parquinho.jpg';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+<Base title="Dra. Camilla Arouca · Pediatra em Piedade, perto de Boa Viagem" description={site.descricao}>
+  <section class="hero">
+    <div class="wrap split rev">
+      <div class="hero-texto">
+        <span class="eyebrow left">Pediatra · Piedade · Jaboatão dos Guararapes</span>
+        <h1>Pediatria com tempo, clareza e acolhimento para a sua família.</h1>
+        <p class="lead">Consultas de 1 hora, acompanhamento do pré-natal à adolescência e orientações baseadas em evidências, em linguagem simples. Pertinho de Boa Viagem, num espaço cercado de natureza.</p>
+        <div class="acoes">
+          <a class="btn btn-primary" href={whatsappLink()} target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+          <a class="btn btn-ghost" href="/consultas/">Conhecer as consultas</a>
+        </div>
+        <p class="credencial">{site.nome} · {site.crm} · {site.rqe}</p>
+      </div>
+      <div class="hero-foto">
+        <div class="arch"><Image src={retrato} alt="Dra. Camilla Arouca, pediatra, sorrindo em um jardim" widths={[400, 700, 1000]} sizes="(min-width: 860px) 480px, 90vw" loading="eager" fetchpriority="high" /></div>
+        <img class="borboleta" src="/img/borboleta.png" alt="" width="60" height="72" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section salvia center">
+    <div class="narrow">
+      <span class="eyebrow">Posicionamento</span>
+      <h2>Ciência, presença e escolhas conscientes para fortalecer famílias.</h2>
+      <p class="lead" style="color:#3a3a2c">Mais do que respostas prontas, ajudar os pais a fazerem <strong>perguntas melhores</strong>.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow">Consultas</span>
+        <h2>Como posso cuidar de vocês</h2>
+      </div>
+      <div class="grid grid-3" style="margin-top:2.2rem">
+        <a class="card servico" href="/consultas/#puericultura"><span class="dot rosa"></span><h3>Puericultura</h3><p>Acompanhamento do crescimento e do desenvolvimento, com consultas regulares e planejadas.</p><span class="mais">Saiba mais →</span></a>
+        <a class="card servico" href="/consultas/#pre-natal"><span class="dot dourado"></span><h3>Pré-natal pediátrico</h3><p>Um encontro antes da chegada do bebê para preparar a família e tirar dúvidas com calma.</p><span class="mais">Saiba mais →</span></a>
+        <a class="card servico" href="/consultas/#agudas"><span class="dot salvia"></span><h3>Doenças agudas</h3><p>Febre, tosse, diarreia e as intercorrências do dia a dia, avaliadas com atenção.</p><span class="mais">Saiba mais →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap split">
+      <div class="fotos">
+        <div class="arch f1"><Image src={consultorio} alt="Consultório pediátrico com mesa, poltronas e maca em tons claros" widths={[400, 700]} sizes="(min-width: 860px) 300px, 55vw" /></div>
+        <div class="f2"><Image src={parquinho} alt="Parquinho com escorregador em meio às árvores do The Garden Open Mall" widths={[300, 500]} sizes="(min-width: 860px) 220px, 40vw" /></div>
+      </div>
+      <div>
+        <span class="eyebrow left">O consultório</span>
+        <h2>Eu não estava escolhendo apenas um consultório.</h2>
+        <p>Estava escolhendo o ambiente onde muitas famílias viveriam uma parte importante da infância dos seus filhos. A Unidade de Pediatria fica no <strong>The Garden Open Mall, em Piedade</strong>, a poucos minutos de Boa Viagem e do Paiva.</p>
+        <ul class="lista">
+          <li>Natureza e espaço para brincar</li>
+          <li>Estacionamento gratuito</li>
+          <li>Perto de laboratórios e clínicas</li>
+          <li>Atendimento de segunda a sábado</li>
+        </ul>
+        <a class="btn btn-ghost" href="/consultorio/">Como chegar</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow">A transformação</span>
+        <h2>O que muda na vida da família</h2>
+      </div>
+      <div class="antes-depois">
+        <div class="card antes"><small>Antes</small><p>excesso de informação</p><p>culpa</p><p>insegurança</p></div>
+        <span class="seta" aria-hidden="true">→</span>
+        <div class="card depois"><small>Depois</small><p>clareza</p><p>confiança</p><p>autonomia</p></div>
+      </div>
+    </div>
+  </section>
+
+  {posts.length > 0 && (
+    <section class="section alt">
+      <div class="wrap">
+        <div class="center">
+          <span class="eyebrow">Blog</span>
+          <h2>Informação de qualidade, em linguagem simples</h2>
+        </div>
+        <div class="grid grid-3" style="margin-top:2.2rem">
+          {posts.map((p) => <PostCard post={p} />)}
+        </div>
+        <p class="center" style="margin-top:2rem"><a class="btn btn-ghost" href="/blog/">Ver todos os artigos</a></p>
+      </div>
+    </section>
+  )}
+
+  <Cta />
+</Base>
+
+<style>
+  .hero { padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(3rem, 7vw, 6rem); }
+  .hero-texto h1 { margin-bottom: 0.5em; }
+  .acoes { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1.8rem 0 1.2rem; }
+  .credencial { font-size: 0.85rem; color: var(--texto-suave); letter-spacing: 0.02em; }
+  .hero-foto { position: relative; max-width: 480px; margin-inline: auto; width: 100%; }
+  .hero-foto .arch { aspect-ratio: 4 / 4.4; box-shadow: var(--sombra); outline: 1px solid var(--dourado); outline-offset: 10px; }
+  .borboleta { position: absolute; top: 6%; right: -4%; width: 56px; }
+  @media (max-width: 859px) { .borboleta { display: none; } }
+  .servico { text-decoration: none; color: inherit; display: block; transition: transform 0.2s ease; }
+  .servico:hover { transform: translateY(-4px); }
+  .servico .mais { font-family: var(--titulo); font-size: 0.85rem; color: var(--dourado); }
+  .fotos { position: relative; display: grid; grid-template-columns: 1.3fr 1fr; gap: 1rem; align-items: end; }
+  .fotos .f1 { aspect-ratio: 3 / 4.6; }
+  .fotos .f2 { border-radius: var(--raio); overflow: hidden; aspect-ratio: 3 / 3.8; margin-bottom: 2rem; }
+  .fotos .f2 img { width: 100%; height: 100%; object-fit: cover; }
+  .lista { list-style: none; padding: 0; margin: 1.2rem 0 1.8rem; }
+  .lista li { padding-left: 1.4rem; position: relative; margin-bottom: 0.45rem; }
+  .lista li::before { content: ''; position: absolute; left: 0; top: 0.65em; width: 8px; height: 8px; border-radius: 50%; background: var(--salvia); }
+  .lista li:nth-child(2)::before { background: var(--rosa); } .lista li:nth-child(3)::before { background: var(--dourado); }
+  .antes-depois { display: grid; grid-template-columns: 1fr; gap: 1rem; align-items: center; margin-top: 2.2rem; text-align: center; }
+  @media (min-width: 760px) { .antes-depois { grid-template-columns: 1fr auto 1fr; } }
+  .antes-depois .card p { font-family: var(--titulo); font-size: 1.45rem; margin: 0.15em 0; }
+  .antes-depois small { font-family: var(--titulo); letter-spacing: 0.25em; text-transform: uppercase; font-size: 0.75rem; color: var(--texto-suave); }
+  .antes p { color: var(--texto-suave); }
+  .depois { background: var(--salvia); border-color: var(--salvia); }
+  .depois p, .depois small { color: #343428; }
+  .seta { font-size: 2rem; color: var(--dourado); justify-self: center; }
+  @media (max-width: 759px) { .seta { transform: rotate(90deg); } }
+</style>

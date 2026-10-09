@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { post: CollectionEntry<'blog'> }
+const { post } = Astro.props;
+const data = post.data;
+const fmt = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'UTC' });
+---
+<article class="card post">
+  {data.cover ? <img src={data.cover} alt={data.coverAlt ?? ''} loading="lazy" class="capa" /> : <div class="capa vazia" aria-hidden="true"><img src="/img/elefante.png" alt="" width="70" height="82" /></div>}
+  <div class="corpo">
+    <span class="cat">{data.category}</span>
+    <h3><a href={`/blog/${post.id}/`}>{data.title}</a></h3>
+    <p>{data.description}</p>
+    <time datetime={data.pubDate.toISOString()}>{fmt.format(data.pubDate)}</time>
+  </div>
+</article>
+<style>
+  .post { padding: 0; overflow: hidden; display: flex; flex-direction: column; position: relative; transition: transform 0.2s ease; }
+  .post:hover { transform: translateY(-4px); }
+  .capa { aspect-ratio: 16 / 9; width: 100%; object-fit: cover; }
+  .capa.vazia { background: var(--areia); display: grid; place-items: center; }
+  .capa.vazia img { width: 64px; opacity: 0.85; }
+  .corpo { padding: 1.4rem 1.5rem 1.6rem; display: flex; flex-direction: column; flex: 1; }
+  .cat { font-family: var(--titulo); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--salvia-escura); margin-bottom: 0.5rem; }
+  h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+  h3 a { text-decoration: none; }
+  h3 a::after { content: ''; position: absolute; inset: 0; }
+  p { font-size: 0.95rem; color: var(--texto-suave); flex: 1; }
+  time { font-size: 0.8rem; color: var(--texto-suave); }
+</style>

@@ -1,0 +1,72 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Cta from '../components/Cta.astro';
+import { site } from '../data/site';
+import consultorio from '../assets/consultorio.jpg';
+import parquinho from '../assets/parquinho.jpg';
+import brinquedos from '../assets/brinquedos.jpg';
+import caminho from '../assets/caminho.jpg';
+const e = site.endereco;
+const mapaEmbed = `https://www.google.com/maps?q=${encodeURIComponent('The Garden Open Mall, Piedade, Jaboatão dos Guararapes')}&output=embed`;
+---
+<Base title="Pediatra em Piedade, perto de Boa Viagem · Consultório no The Garden" description="Consultório pediátrico no The Garden Open Mall, em Piedade, Jaboatão dos Guararapes, pertinho de Boa Viagem e do Paiva. Natureza, parquinho e estacionamento gratuito.">
+  <PageHeader eyebrow="O consultório" title="Pediatra em Piedade, pertinho de Boa Viagem" lead={`${e.local}, em ${e.bairro}, ${e.cidade}.`} />
+
+  <section class="section">
+    <div class="wrap split">
+      <div class="galeria">
+        <div class="arch g1"><Image src={consultorio} alt="Sala de consulta pediátrica com maca, balança e móveis em madeira clara" widths={[400, 800]} sizes="(min-width: 860px) 320px, 60vw" /></div>
+        <div class="g2"><Image src={parquinho} alt="Parquinho com escorregador verde entre árvores" widths={[300, 600]} sizes="(min-width: 860px) 220px, 40vw" /></div>
+        <div class="g3"><Image src={brinquedos} alt="Brinquedos educativos coloridos na parede do consultório" widths={[300, 600]} sizes="(min-width: 860px) 220px, 40vw" /></div>
+      </div>
+      <div>
+        <span class="eyebrow left">Por que escolhi atender aqui</span>
+        <h2>Um ambiente pensado para a infância</h2>
+        <p>A Unidade de Pediatria fica dentro do <strong>The Garden Open Mall</strong>, um centro aberto e arborizado em Piedade, próximo à divisa com Boa Viagem. Antes ou depois da consulta, a criança tem natureza e espaço para brincar.</p>
+        <ul class="lista">
+          <li><strong>Estacionamento gratuito</strong> no local</li>
+          <li><strong>Natureza e parquinho</strong> para a espera ficar mais leve</li>
+          <li><strong>Perto de laboratórios e clínicas</strong>, facilitando exames</li>
+          <li><strong>Atendimento de segunda a sábado</strong>, com hora marcada</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap split rev">
+      <div>
+        <span class="eyebrow left">Como chegar</span>
+        <h2>A infância também acontece no caminho.</h2>
+        <p>Para quem vem de <strong>Boa Viagem</strong>, de <strong>Candeias</strong> ou do <strong>Paiva</strong>, o trajeto é curto e pode virar tempo vivido junto.</p>
+        <address>
+          <strong>{e.local}</strong><br />
+          {e.rua && <>{e.rua}<br /></>}
+          {e.bairro}, {e.cidade} – {e.uf}{e.cep && ` · CEP ${e.cep}`}
+        </address>
+        <p><a class="btn btn-ghost" href={site.googleMaps} target="_blank" rel="noopener">Abrir no Google Maps</a></p>
+        <div class="mapa">
+          <iframe src={mapaEmbed} title="Mapa do The Garden Open Mall em Piedade" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+      <div class="arch caminho"><Image src={caminho} alt="Caminho arborizado com palmeiras no The Garden Open Mall" widths={[400, 800]} sizes="(min-width: 860px) 420px, 90vw" /></div>
+    </div>
+  </section>
+
+  <Cta />
+</Base>
+<style>
+  .galeria { display: grid; grid-template-columns: 1.3fr 1fr; grid-template-rows: 1fr 1fr; gap: 1rem; }
+  .g1 { grid-row: span 2; aspect-ratio: 3 / 5; }
+  .g2, .g3 { border-radius: var(--raio); overflow: hidden; }
+  .g2 img, .g3 img { width: 100%; height: 100%; object-fit: cover; }
+  .lista { list-style: none; padding: 0; margin: 1.2rem 0 0; }
+  .lista li { padding-left: 1.4rem; position: relative; margin-bottom: 0.55rem; }
+  .lista li::before { content: ''; position: absolute; left: 0; top: 0.65em; width: 8px; height: 8px; border-radius: 50%; background: var(--salvia); }
+  address { font-style: normal; margin: 1.2rem 0; line-height: 1.6; }
+  .mapa { border-radius: var(--raio); overflow: hidden; border: 1px solid var(--linha); aspect-ratio: 16 / 10; margin-top: 1.2rem; }
+  .mapa iframe { width: 100%; height: 100%; border: 0; }
+  .caminho { aspect-ratio: 3 / 4.5; max-width: 420px; width: 100%; margin-inline: auto; box-shadow: var(--sombra); }
+</style>
