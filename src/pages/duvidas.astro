@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Duvidas from '../components/Duvidas.astro';
+import Cta from '../components/Cta.astro';
+import { temas, todasDuvidas, faqSchema } from '../data/duvidas';
+---
+<Base title="Dúvidas frequentes sobre a consulta pediátrica" description="Plano de saúde, febre, amamentação, sono, alimentação, telas e birras: respostas da Dra. Camilla Arouca, pediatra, às dúvidas mais comuns das famílias." schema={[faqSchema(todasDuvidas)]}>
+  <PageHeader eyebrow="Dúvidas frequentes" title="Nenhuma dúvida sobre o seu filho é boba." lead="As respostas orientam, mas nunca substituem a avaliação individual." />
+  <section class="section">
+    <div class="narrow">
+      <nav class="temas" aria-label="Temas">
+        {temas.map((t) => <a href={`#${t.id}`}>{t.titulo}</a>)}
+      </nav>
+      {temas.map((t) => (
+        <section id={t.id} class="tema">
+          <h2>{t.titulo}</h2>
+          <Duvidas itens={t.itens} />
+        </section>
+      ))}
+    </div>
+  </section>
+  <Cta titulo="Não encontrou a sua dúvida?" texto="Ela pode ser exatamente o motivo de uma boa conversa." />
+</Base>
+<style>
+  .temas { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 2.5rem; }
+  .temas a { font-family: var(--titulo); font-size: 0.85rem; text-decoration: none; padding: 0.5rem 1rem; border: 1px solid var(--linha); border-radius: 999px; background: var(--creme-claro); }
+  .temas a:hover { border-color: var(--dourado); }
+  .tema { scroll-margin-top: 100px; margin-bottom: 2.8rem; }
+  .tema h2 { font-size: 1.45rem; }
+</style>

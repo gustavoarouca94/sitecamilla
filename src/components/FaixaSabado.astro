@@ -1,0 +1,21 @@
+---
+interface Props { compacta?: boolean }
+const { compacta = false } = Astro.props;
+---
+<section class:list={['faixa', { compacta }]} aria-labelledby="faixa-titulo">
+  <div class="narrow center">
+    <h2 id="faixa-titulo">Atendimento de segunda a sábado.</h2>
+    {!compacta && (
+      <p>Febre que começou na sexta à noite. Uma tosse que piorou no fim de semana. Eu sei como é importante ter flexibilidade de dias. Por isso, atendo de segunda a sábado, conforme a disponibilidade da agenda. Assim, muitas situações podem ser avaliadas no consultório, com calma, evitando idas e exposições desnecessárias à emergência.</p>
+    )}
+    <p class="nota">O consultório não substitui o pronto-socorro. Em sinais de alarme, procure a emergência.</p>
+  </div>
+</section>
+<style>
+  .faixa { background: var(--salvia); padding: clamp(2.8rem, 6vw, 4rem) 0; }
+  .faixa h2 { color: var(--salvia-texto); margin-bottom: 0.7rem; }
+  .faixa p { color: var(--salvia-texto); }
+  .nota { font-size: 0.88rem; margin: 0; opacity: 0.9; }
+  .compacta { padding: 2rem 0; }
+  .compacta h2 { font-size: 1.4rem; margin-bottom: 0.3rem; }
+</style>

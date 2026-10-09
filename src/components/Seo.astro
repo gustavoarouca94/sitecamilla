@@ -1,5 +1,5 @@
 ---
-import { site } from '../data/site';
+import { site, consultas } from '../data/site';
 
 interface Props {
   title: string;
@@ -15,7 +15,9 @@ interface Props {
 const { title, description = site.descricao, image = '/img/og-default.jpg', type = 'website', schema = [], noindex = false, publishedTime, modifiedTime } = Astro.props;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const ogImage = new URL(image, site.url).href;
-const fullTitle = title.includes(site.nomeCurto) ? title : `${title} | ${site.nome} · Pediatra`;
+// Mantém o título dentro de ~60 caracteres: só acrescenta o nome quando cabe.
+const sufixo = ` · ${site.nome}`;
+const fullTitle = title.includes(site.nomeCurto) || (title + sufixo).length > 62 ? title : title + sufixo;
 
 const e = site.endereco;
 const physician = {
@@ -33,8 +35,8 @@ const physician = {
   identifier: [site.crm, site.rqe],
   address: {
     '@type': 'PostalAddress',
-    name: e.local,
-    streetAddress: e.rua || e.local,
+    name: `${e.unidade} · ${e.local}`,
+    streetAddress: e.rua,
     addressLocality: e.cidade,
     addressRegion: e.uf,
     postalCode: e.cep || undefined,
@@ -46,11 +48,7 @@ const physician = {
     '@type': 'OpeningHoursSpecification', dayOfWeek: h.dias, opens: h.abre, closes: h.fecha,
   })),
   sameAs: [site.instagram],
-  availableService: [
-    { '@type': 'MedicalProcedure', name: 'Puericultura (acompanhamento do crescimento e desenvolvimento)' },
-    { '@type': 'MedicalProcedure', name: 'Consulta pré-natal pediátrica' },
-    { '@type': 'MedicalProcedure', name: 'Consulta para doenças agudas da infância' },
-  ],
+  availableService: consultas.map((c) => ({ '@type': 'MedicalProcedure', name: c.nome, url: `${site.url}/consultas/${c.slug}/` })),
 };
 const website = {
   '@context': 'https://schema.org',

@@ -1,0 +1,35 @@
+---
+import Consulta from '../../layouts/Consulta.astro';
+import foto from '../../assets/consultorio.jpg';
+---
+<Consulta
+  slug="queixas-agudas"
+  seoTitle="Pediatra para febre e tosse · segunda a sábado"
+  seoDescription="Avaliação de febre, tosse, dor e diarreia no consultório, de segunda a sábado, conforme agenda. Pediatra em Piedade, perto de Boa Viagem."
+  title="Quando seu filho adoece, você não precisa esperar a semana que vem."
+  foto={foto}
+  fotoAlt="Sala de consulta pediátrica com maca e balança"
+  textoWhatsapp="Olá! Meu filho está com sintomas e gostaria de agendar uma consulta com a Dra. Camilla."
+>
+  <h2>Para quem é</h2>
+  <p>Crianças com sintomas que surgem no dia a dia, como febre, tosse, dor, diarreia e lesões de pele.</p>
+
+  <h2>O que acontece</h2>
+  <p>Atendimento individualizado, com escuta atenta, exame físico e orientações para cada situação. Muitos quadros podem ser avaliados e tratados no consultório, evitando idas desnecessárias à emergência. Por isso, atendo de segunda a sábado, conforme a disponibilidade da agenda.</p>
+
+  <h2>O que você leva</h2>
+  <p>Um plano de cuidados e orientações claras sobre sinais de alarme, quando procurar a emergência e quais situações precisam de atendimento imediato.</p>
+
+  <p class="aviso"><strong>O consultório não substitui o pronto-socorro</strong> em situações de urgência ou emergência. Em caso de dificuldade para respirar, criança muito sonolenta ou difícil de acordar, convulsão, sinais de desidratação ou febre em bebês com menos de 3 meses, procure a emergência imediatamente.</p>
+
+  <h2>Também cuido de</h2>
+  <ul class="tags">
+    <li>Gripes e resfriados</li><li>Sinusites</li><li>Otites</li><li>Amigdalites</li><li>Bronquiolite</li><li>Asma</li>
+    <li>Doenças respiratórias</li><li>Febre</li><li>Cólica</li><li>Choro e irritabilidade persistentes</li>
+    <li>Doenças do recém-nascido</li><li>Diarreia</li><li>Constipação</li><li>Anemia</li><li>Infecções</li><li>Introdução alimentar</li>
+  </ul>
+</Consulta>
+<style>
+  .tags { list-style: none; padding: 0; margin: 0.6rem 0 2rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tags li { font-size: 0.9rem; padding: 0.35rem 0.85rem; border: 1px solid var(--linha); border-radius: 999px; background: var(--creme-claro); }
+</style>

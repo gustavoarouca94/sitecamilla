@@ -1,0 +1,93 @@
+---
+// Modelo comum das páginas de consulta: para quem é → o que acontece → o que você leva → agendar.
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import Base from './Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Duvidas from '../components/Duvidas.astro';
+import Cta from '../components/Cta.astro';
+import { site, consultas, whatsappLink } from '../data/site';
+import { duvidasDaPagina, faqSchema } from '../data/duvidas';
+
+type Slug = (typeof consultas)[number]['slug'];
+interface Props {
+  slug: Slug;
+  seoTitle: string;
+  seoDescription: string;
+  title: string;
+  foto: ImageMetadata;
+  fotoAlt: string;
+  textoWhatsapp: string;
+}
+const { slug, seoTitle, seoDescription, title, foto, fotoAlt, textoWhatsapp } = Astro.props;
+const atual = consultas.find((c) => c.slug === slug)!;
+const outras = consultas.filter((c) => c.slug !== slug);
+const duvidas = duvidasDaPagina(slug);
+const url = `${site.url}/consultas/${slug}/`;
+const schema: Record<string, unknown>[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    name: seoTitle,
+    description: seoDescription,
+    url,
+    inLanguage: 'pt-BR',
+    about: { '@type': 'MedicalProcedure', name: atual.nome },
+    audience: { '@type': 'PeopleAudience', audienceType: 'Pais e cuidadores' },
+    author: { '@id': `${site.url}/sobre/#pessoa` },
+    provider: { '@id': `${site.url}/#medica` },
+  },
+];
+if (duvidas.length) schema.push(faqSchema(duvidas));
+---
+<Base title={seoTitle} description={seoDescription} schema={schema}>
+  <PageHeader eyebrow={atual.nome} title={title} crumbs={[{ href: '/consultas/', label: 'Consultas' }]} />
+
+  <section class="section">
+    <div class="wrap split rev">
+      <div class="blocos">
+        <slot />
+        <a class="btn btn-primary" href={whatsappLink(textoWhatsapp)} target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+      </div>
+      <div class="lado">
+        <div class="arch foto-lado"><Image src={foto} alt={fotoAlt} widths={[400, 700]} sizes="(min-width: 860px) 380px, 90vw" /></div>
+        <slot name="lado" />
+      </div>
+    </div>
+  </section>
+
+  {duvidas.length > 0 && (
+    <section class="section alt">
+      <div class="narrow">
+        <div class="center"><span class="eyebrow">Dúvidas frequentes</span><h2>Perguntas sobre {atual.nome.toLowerCase()}</h2></div>
+        <Duvidas itens={duvidas} />
+        <p class="center" style="margin-top:1.4rem"><a href="/duvidas/">Ver todas as dúvidas</a></p>
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="wrap">
+      <h2 class="center">Outras consultas</h2>
+      <div class="grid grid-3 outras">
+        {outras.map((c) => (
+          <a class="card servico" href={`/consultas/${c.slug}/`}><span class={`dot ${c.cor}`}></span><h3>{c.nome}</h3><p>{c.resumo}</p></a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Cta />
+</Base>
+
+<style>
+  .blocos :global(h2) { font-size: 1.05rem; font-family: var(--titulo); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--salvia-escura); margin: 2rem 0 0.5rem; }
+  .blocos :global(h2:first-child) { margin-top: 0; }
+  .blocos :global(.apoio) { margin: 2rem 0; }
+  .lado { position: sticky; top: 110px; align-self: start; display: grid; gap: 1.5rem; padding: 10px; }
+  .foto-lado { aspect-ratio: 3 / 3.8; max-width: 380px; width: 100%; margin-inline: auto; box-shadow: var(--sombra); }
+  .outras { margin-top: 1.6rem; max-width: 820px; margin-inline: auto; }
+  .servico { text-decoration: none; color: inherit; display: block; }
+  .servico p { color: var(--texto-suave); margin: 0; }
+  @media (max-width: 859px) { .lado { position: static; order: -1; } .foto-lado { max-width: 300px; } }
+</style>

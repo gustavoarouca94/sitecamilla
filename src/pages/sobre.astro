@@ -5,6 +5,7 @@ import PageHeader from '../components/PageHeader.astro';
 import Cta from '../components/Cta.astro';
 import { site } from '../data/site';
 import retrato from '../assets/camilla-retrato.jpg';
+import caminho from '../assets/caminho.jpg';
 
 const person = {
   '@context': 'https://schema.org',
@@ -13,60 +14,65 @@ const person = {
   name: 'Camilla Arouca',
   honorificPrefix: 'Dra.',
   jobTitle: 'Médica pediatra',
-  alumniOf: [{ '@type': 'CollegeOrUniversity', name: 'Universidade Federal de Pernambuco (UFPE)' }],
+  identifier: [site.crm, site.rqe],
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'Universidade Federal de Pernambuco (UFPE)' },
+    { '@type': 'Hospital', name: 'Hospital Barão de Lucena' },
+  ],
   worksFor: { '@id': `${site.url}/#medica` },
   sameAs: [site.instagram],
   url: `${site.url}/sobre/`,
 };
 ---
-<Base title="Sobre a Dra. Camilla Arouca, pediatra" description="Conheça a Dra. Camilla Arouca: formada pela UFPE, residência em Pediatria no Hospital Barão de Lucena e mais de 10 anos ao lado das famílias de Pernambuco." schema={[person]}>
-  <PageHeader eyebrow="Sobre" title="Antes de existir um consultório, existiu uma caminhada." />
+<Base title="Dra. Camilla Arouca · Pediatra CRM-PE 22927" description="Médica pela UFPE, residência em Pediatria no Hospital Barão de Lucena e mais de dez anos ao lado das famílias. Conheça a Dra. Camilla Arouca." schema={[person]}>
+  <PageHeader eyebrow="Sobre a Dra. Camilla" title="Prazer, eu sou Camilla Arouca." />
 
   <section class="section">
     <div class="wrap split">
-      <div class="arch foto"><Image src={retrato} alt="Retrato da Dra. Camilla Arouca" widths={[400, 700, 1000]} sizes="(min-width: 860px) 440px, 90vw" /></div>
+      <div class="lado">
+        <div class="arch foto"><Image src={retrato} alt="Retrato da Dra. Camilla Arouca" widths={[400, 700, 1000]} sizes="(min-width: 860px) 420px, 90vw" /></div>
+      </div>
       <div class="prose">
-        <p class="script">"Quando criança, eu dizia que seria pediatra ou professora."</p>
-        <p>Sou a Camilla, cristã, esposa, mãe da Lis e pediatra. Me formei em Medicina pela <strong>Universidade Federal de Pernambuco (UFPE)</strong> e fiz residência em Pediatria no <strong>Hospital Barão de Lucena</strong>. São mais de 10 anos ao lado das famílias.</p>
-        <p>Acabei sendo um pouco das duas coisas que sonhava: na consulta, gosto de explicar o porquê de cada orientação, para que a família saia segura e capaz de tomar boas decisões no dia a dia.</p>
-        <p>Por isso as consultas são longas, de 1 hora, e o acompanhamento é contínuo. O objetivo não é só tratar a doença de hoje, mas cultivar uma infância saudável, com escolhas conscientes.</p>
-        <h2>O que guia o meu cuidado</h2>
-        <div class="pilares">
-          <div><span class="dot rosa"></span><h3>Clareza</h3><p>Evidência científica em linguagem simples.</p></div>
-          <div><span class="dot dourado"></span><h3>Parceria</h3><p>A família é a protagonista.</p></div>
-          <div><span class="dot salvia"></span><h3>Cultivo</h3><p>Pequenas escolhas, futuro saudável.</p></div>
-          <div><span class="dot rosa"></span><h3>Discernimento</h3><p>Ajudar a fazer as perguntas certas.</p></div>
-        </div>
-        <h2>Formação</h2>
-        <ul>
-          <li>Graduação em Medicina — UFPE</li>
-          <li>Residência médica em Pediatria — Hospital Barão de Lucena</li>
-          <li>{site.crm} · {site.rqe} (Pediatria)</li>
-          <!-- TODO: títulos, pós-graduações, sociedades (ex.: SBP/SOPEPE), cursos relevantes -->
-        </ul>
+        <p>Cristã, esposa, mãe da Lis e pediatra. Sou médica formada pela Universidade Federal de Pernambuco e fiz residência em Pediatria no Hospital Barão de Lucena. Há mais de dez anos, acompanho crianças e suas famílias.</p>
+        <p>Antes de existir um consultório, antes de existir uma marca, existiu uma caminhada. Quando criança, eu dizia que seria pediatra ou professora de educação infantil. Depois veio a maternidade, e ser mãe da Lis ampliou a forma como eu enxergo o cuidado.</p>
+        <p>Acredito em uma Pediatria baseada em evidências, mas capaz de conversar com a vida real. Uma Pediatria que escuta, orienta e caminha ao lado das famílias, para que ninguém precise dar conta de tudo sozinho.</p>
+
+        <h2>Formação e experiência</h2>
+        <table class="formacao">
+          <thead><tr><th>Formação</th><th>Ano</th></tr></thead>
+          <tbody>
+            <tr><td>Medicina, Universidade Federal de Pernambuco</td><td>2014</td></tr>
+            <tr><td>Residência em Pediatria, Hospital Barão de Lucena</td><td>2015–2017</td></tr>
+          </tbody>
+        </table>
+        <p>Experiência em emergências pediátricas, acompanhamento de crianças internadas, ambulatório de pediatria e preceptoria de residentes de Pediatria.</p>
+        <p><strong>{site.crm} · {site.rqe}</strong></p>
       </div>
     </div>
   </section>
 
-  <section class="section alt">
-    <div class="wrap">
-      <div class="center"><span class="eyebrow">A marca</span><h2>Uma marca que conta uma história</h2></div>
-      <div class="grid grid-4" style="margin-top:2rem">
-        <div class="card"><span class="dot dourado"></span><h3>O elefante</h3><p>Força tranquila e protetora, a rede de apoio. A tromba voltada para o alto.</p></div>
-        <div class="card"><span class="dot rosa"></span><h3>A flor</h3><p>Cada família é única. A Lis e os lírios do campo.</p></div>
-        <div class="card"><span class="dot salvia"></span><h3>A borboleta</h3><p>Os ciclos da vida e a intencionalidade.</p></div>
-        <div class="card"><span class="dot dourado"></span><h3>O brilho</h3><p>Pequenos instantes que constroem uma infância.</p></div>
+  <section class="section creme">
+    <div class="wrap split rev">
+      <div>
+        <span class="eyebrow">A marca</span>
+        <h2>Por que um elefante?</h2>
+        <p>O elefante representa uma força tranquila e protetora. Elefantes caminham em comunidade, são rede de apoio e cuidam dos seus filhotes. A tromba voltada para o alto lembra que olhamos para frente. A flor fala de cada família, que é única, da Lis e dos lírios do campo. A borboleta representa os ciclos da vida e a intencionalidade de cada escolha.</p>
+        <img class="logo" src="/img/logo.png" alt="Logomarca Camilla Arouca Pediatra: um elefante segurando uma flor com a tromba, com uma borboleta" width="300" height="196" loading="lazy" />
       </div>
+      <div class="arch caminho"><Image src={caminho} alt="Dra. Camilla caminhando entre bambus no jardim do The Garden" widths={[400, 700]} sizes="(min-width: 860px) 380px, 80vw" /></div>
     </div>
   </section>
 
   <Cta />
 </Base>
 <style>
-  .foto { aspect-ratio: 4 / 4.6; max-width: 440px; width: 100%; margin-inline: auto; box-shadow: var(--sombra); align-self: start; position: sticky; top: 110px; }
-  .script { font-size: 1.8rem; }
-  .pilares { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.4rem; margin: 1rem 0 0.5rem; }
-  .pilares h3 { margin: 0 0 0.2rem; font-size: 1.1rem; }
-  .pilares p { font-size: 0.95rem; color: var(--texto-suave); margin: 0; }
-  @media (max-width: 859px) { .foto { position: static; } }
+  .lado { align-self: start; position: sticky; top: 110px; padding: 10px; }
+  .foto { aspect-ratio: 4 / 4.6; max-width: 420px; width: 100%; margin-inline: auto; box-shadow: var(--sombra); }
+  .formacao { width: 100%; border-collapse: collapse; font-size: 1rem; margin: 0.5rem 0 1.4rem; }
+  .formacao th, .formacao td { text-align: left; padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--linha); }
+  .formacao th { font-family: var(--titulo); font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--salvia-escura); font-weight: 600; }
+  .formacao td:last-child { white-space: nowrap; color: var(--texto-suave); }
+  .logo { width: 240px; margin-top: 1.5rem; mix-blend-mode: multiply; }
+  .caminho { aspect-ratio: 3 / 4.4; max-width: 380px; width: 100%; margin-inline: auto; box-shadow: var(--sombra); }
+  @media (max-width: 859px) { .lado { position: static; } }
 </style>

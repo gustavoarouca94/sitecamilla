@@ -1,0 +1,87 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Cta from '../components/Cta.astro';
+import { site, whatsappLink } from '../data/site';
+import consultorio from '../assets/consultorio.jpg';
+import parquinho from '../assets/parquinho.jpg';
+import miniPaciente from '../assets/brinquedos.jpg';
+import caminho from '../assets/caminho.jpg';
+const e = site.endereco;
+const mapaEmbed = `https://www.google.com/maps?q=${encodeURIComponent(`${e.local}, ${e.rua}, ${e.bairro}, ${e.cidade}`)}&output=embed`;
+---
+<Base title="Como funciona a consulta · Consultório no The Garden, Piedade" description="Consulta particular de cerca de 1 hora, de segunda a sábado. Recibo para reembolso, o que levar e como chegar ao consultório no The Garden, em Piedade.">
+  <PageHeader eyebrow="Como funciona" title="Como funciona a consulta e o espaço" lead="Tudo o que você precisa saber antes de chegar." />
+
+  <section class="section">
+    <div class="narrow">
+      <h2 class="center">A consulta</h2>
+      <dl class="tabela">
+        <div><dt>Dias</dt><dd>Segunda a sábado, conforme a disponibilidade da agenda</dd></div>
+        <div><dt>Duração</dt><dd>Cerca de 1 hora, podendo variar conforme a necessidade de cada criança e família</dd></div>
+        <div><dt>Formato</dt><dd>Consulta particular. Não atendemos por convênios.</dd></div>
+        <div><dt>Reembolso</dt><dd>Emitimos recibo. Se o seu plano de saúde oferece reembolso para consultas particulares, você pode solicitar diretamente à operadora, conforme as regras do plano.</dd></div>
+        <div><dt>Agendamento</dt><dd>Pelo <a href={whatsappLink()} target="_blank" rel="noopener">WhatsApp</a>: diga o melhor dia e turno para sua família e verificamos os horários.</dd></div>
+      </dl>
+
+      <h2 class="center" style="margin-top:3.5rem">O que levar no dia</h2>
+      <ul class="lista levar">
+        <li>Resumo de alta da maternidade, se o bebê for pequeno</li>
+        <li>Exames anteriores: triagem neonatal, exames de rotina ou de atendimentos de emergência</li>
+        <li>Caderneta de vacinação</li>
+        <li>Um caderninho ou bloco de notas com suas dúvidas</li>
+        <li>Disposição para uma boa conversa</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section creme" id="espaco">
+    <div class="wrap split">
+      <div class="galeria">
+        <div class="arch g1"><Image src={consultorio} alt="Sala de consulta pediátrica com maca, balança e móveis em madeira clara" widths={[400, 800]} sizes="(min-width: 860px) 320px, 60vw" /></div>
+        <div class="foto g2"><Image src={parquinho} alt="Parquinho a céu aberto com escorregador entre árvores" widths={[300, 600]} sizes="(min-width: 860px) 220px, 40vw" /></div>
+        <div class="foto g3"><Image src={miniPaciente} alt="Mini paciente: boneco usado para explicar o exame às crianças" widths={[300, 600]} sizes="(min-width: 860px) 220px, 40vw" /></div>
+      </div>
+      <div>
+        <span class="eyebrow">O espaço</span>
+        <h2>Escolher onde atender também foi escolher a forma de receber cada família.</h2>
+        <p>O consultório fica no <strong>The Garden Open Mall</strong>, na {e.rua}, em Piedade, perto da divisa com Boa Viagem. Um lugar arborizado, com área externa aberta e coberta, parquinho a céu aberto e estacionamento gratuito, perto de laboratórios, farmácias e outras clínicas.</p>
+        <p>Dentro da clínica, a família encontra recepção acolhedora, brinquedoteca, fraldário e banheiro. No consultório, cada detalhe foi pensado para a criança, inclusive os mini pacientes que ajudam a explicar o exame.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split rev">
+      <div>
+        <span class="eyebrow">Como chegar</span>
+        <p class="script">A infância também acontece no caminho. Que a ida à consulta seja também um tempo vivido junto.</p>
+        <address>
+          <strong>{e.unidade} · {e.local}</strong><br />
+          {e.rua} · {e.bairro}<br />
+          {e.cidade} – {e.uf} · CEP {e.cep}
+        </address>
+        <p><a class="btn btn-ghost" href={site.googleMaps} target="_blank" rel="noopener">Abrir no Google Maps</a></p>
+        <div class="mapa"><iframe src={mapaEmbed} title="Mapa do The Garden Open Mall em Piedade" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      </div>
+      <div class="arch caminho"><Image src={caminho} alt="Caminho arborizado entre bambus no The Garden" widths={[400, 800]} sizes="(min-width: 860px) 400px, 90vw" /></div>
+    </div>
+  </section>
+
+  <Cta />
+</Base>
+<style>
+  .tabela { margin: 1.6rem 0 0; border-top: 1px solid var(--linha); }
+  .tabela div { display: grid; grid-template-columns: 140px 1fr; gap: 1rem; padding: 1rem 0.4rem; border-bottom: 1px solid var(--linha); }
+  .tabela dt { font-family: var(--titulo); font-weight: 600; color: var(--cafe); }
+  .tabela dd { margin: 0; }
+  @media (max-width: 560px) { .tabela div { grid-template-columns: 1fr; gap: 0.2rem; } }
+  .levar { max-width: 560px; margin-inline: auto; }
+  .galeria { display: grid; grid-template-columns: 1.3fr 1fr; grid-template-rows: 1fr 1fr; gap: 1rem; padding: 10px; }
+  .g1 { grid-row: span 2; aspect-ratio: 3 / 5; }
+  address { font-style: normal; margin: 1.2rem 0; line-height: 1.6; }
+  .mapa { border-radius: var(--raio); overflow: hidden; border: 1px solid var(--linha); aspect-ratio: 16 / 10; margin-top: 1.2rem; }
+  .mapa iframe { width: 100%; height: 100%; border: 0; }
+  .caminho { aspect-ratio: 3 / 4.5; max-width: 400px; width: 100%; margin-inline: auto; box-shadow: var(--sombra); }
+</style>

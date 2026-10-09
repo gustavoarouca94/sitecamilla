@@ -4,22 +4,36 @@ Site institucional + blog, feito em **Astro** (páginas estáticas, ótimas para
 
 ## Estrutura
 
-| Página | Endereço | Foco de busca |
-|---|---|---|
-| Início | `/` | "pediatra Piedade", "pediatra perto de Boa Viagem" |
-| Sobre | `/sobre/` | nome da médica, credenciais (E-E-A-T) |
-| Consultas | `/consultas/` | puericultura, pré-natal pediátrico, FAQ |
-| O consultório | `/consultorio/` | SEO local: The Garden, Piedade, Boa Viagem, Paiva |
-| Blog | `/blog/` + `/blog/categoria/...` | conteúdo educativo |
-| Contato | `/contato/` | agendamento |
+Baseada no documento "Site profissional — Dra. Camilla Arouca".
 
-SEO já configurado: título/descrição por página, URL canônica, Open Graph (preview no WhatsApp/Instagram), `sitemap-index.xml`, `robots.txt`, RSS, breadcrumbs e dados estruturados (`Physician`, `MedicalWebPage`, `FAQPage`, `BreadcrumbList`, `Person`).
+| Página | Endereço | Busca principal |
+|---|---|---|
+| Início | `/` | pediatra particular perto de Boa Viagem |
+| Sobre | `/sobre/` | nome, CRM e formação (credibilidade) |
+| Consultas | `/consultas/` | visão geral das três consultas |
+| Pré-natal pediátrico | `/consultas/pre-natal-pediatrico/` | consulta pré-natal pediátrica |
+| Rotina e puericultura | `/consultas/puericultura/` | puericultura, consulta de rotina |
+| Queixas agudas | `/consultas/queixas-agudas/` | pediatra para febre e tosse, sábado |
+| Como funciona e o espaço | `/como-funciona/` | duração, recibo para reembolso, o que levar, local |
+| Dúvidas frequentes | `/duvidas/` | perguntas das famílias, por tema |
+| Blog | `/blog/` | entra no menu a partir de 4 posts (`blogNoMenuAPartirDe` em `site.ts`) |
+
+Onde editar o conteúdo:
+- Dados de contato, horários e bairros: `src/data/site.ts`
+- Dúvidas frequentes: `src/data/duvidas.ts`. Cada pergunta indica em que páginas aparece. Quando houver um post sobre o tema, preencha `post: '/blog/url-do-post/'` para mostrar o link "Leia o artigo completo".
+- Textos das páginas: `src/pages/`
+
+SEO configurado: título e descrição por página, URL canônica, preview no WhatsApp/Instagram, sitemap, robots, RSS, breadcrumbs e dados estruturados (`Physician`, `MedicalWebPage`, `FAQPage`, `Person`, `BreadcrumbList`).
+
+## Fonte Featherly
+
+O guia visual usa a Featherly nas frases manuscritas. Coloque o arquivo em `public/fonts/featherly.woff2` e o site passa a usá-la automaticamente. Se a fonte estiver em `.otf` ou `.ttf`, converta para `.woff2`. Confirme antes se a licença permite uso na web. Sem o arquivo, o site usa a Satisfy.
 
 ## Antes de publicar (TODO)
 
 1. **`src/data/site.ts`**: WhatsApp, horários exatos, coordenadas exatas e, depois de criado, o link do perfil no Google Business.
-2. **Domínio**: registrar no Registro.br e atualizar em `site.ts`, `astro.config.mjs` e `public/robots.txt`.
-3. **Sobre**: completar formação (pós-graduações, SBP/SOPEPE etc.).
+2. **`src/data/duvidas.ts`**: incluir a regra de dúvidas pós-consulta (há um TODO marcado).
+3. **Domínio**: registrar no Registro.br e atualizar em `site.ts`, `astro.config.mjs` e `public/robots.txt`.
 4. **Privacidade**: revisar o texto com assessoria jurídica.
 5. Revisar tudo à luz da **Resolução CFM 2.336/2023** (publicidade médica).
 

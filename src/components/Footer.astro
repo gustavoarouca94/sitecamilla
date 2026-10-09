@@ -1,47 +1,54 @@
 ---
-import { site, nav, whatsappLink } from '../data/site';
+import { getCollection } from 'astro:content';
+import { site, nav, consultas, whatsappLink } from '../data/site';
 const ano = new Date().getFullYear();
 const e = site.endereco;
+const temPosts = (await getCollection('blog', ({ data }) => !data.draft)).length > 0;
 ---
 <footer class="rodape">
   <div class="wrap colunas">
-    <div>
-      <img src="/img/logo.png" alt="Camilla Arouca Pediatra" width="150" height="98" loading="lazy" />
+    <div class="marca">
+      <img src="/img/elefante.png" alt="" width="54" height="63" loading="lazy" />
       <p class="script">{site.slogan}</p>
     </div>
     <div>
       <h3>Onde atendo</h3>
-      <p>{e.local}<br />{e.rua && <>{e.rua}<br /></>}{e.bairro}, {e.cidade} – {e.uf}<br /><small>Próximo à divisa com Boa Viagem</small></p>
+      <p>{e.local}<br />{e.rua}<br />{e.bairro}, {e.cidade} – {e.uf}</p>
       <p><a href={site.googleMaps} target="_blank" rel="noopener">Ver no mapa</a></p>
     </div>
     <div>
-      <h3>Contato</h3>
+      <h3>Atendimento</h3>
       <p>{site.horarios}</p>
-      <p><a href={whatsappLink()} target="_blank" rel="noopener">WhatsApp {site.telefoneExibicao}</a><br />
+      <p><a href={whatsappLink()} target="_blank" rel="noopener">Agendar pelo WhatsApp</a><br />
       <a href={site.instagram} target="_blank" rel="noopener">{site.instagramUser}</a></p>
     </div>
     <div>
       <h3>Navegue</h3>
-      <ul>{nav.map((i) => <li><a href={i.href}>{i.label}</a></li>)}</ul>
+      <ul>
+        {nav.map((i) => <li><a href={i.href}>{i.label}</a></li>)}
+        {consultas.map((c) => <li><a href={`/consultas/${c.slug}/`}>{c.nome}</a></li>)}
+        {temPosts && <li><a href="/blog/">Blog</a></li>}
+      </ul>
     </div>
   </div>
   <div class="wrap legal">
-    <p><strong>{site.nome}</strong> · Médica {site.especialidade} · {site.crm} · {site.rqe}</p>
-    <p>O conteúdo deste site tem caráter informativo e educativo e não substitui a consulta médica. Em caso de urgência, procure o pronto-atendimento mais próximo.</p>
+    <p><strong>{site.nome}</strong> · {site.especialidade} · {site.crm} · {site.rqe}</p>
+    <p>O consultório não substitui o pronto-socorro em situações de urgência ou emergência. O conteúdo deste site é informativo e não substitui a avaliação individual.</p>
     <p>© {ano} {site.nome} · <a href="/privacidade/">Política de privacidade</a></p>
   </div>
 </footer>
 
 <style>
-  .rodape { background: var(--areia); padding: 4rem 0 2rem; margin-top: 0; }
+  .rodape { background: var(--creme); padding: 4rem 0 2rem; }
   .colunas { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-  .rodape img { width: 140px; margin-bottom: 0.6rem; }
-  .rodape h3 { font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--salvia-escura); font-weight: 600; }
+  .marca img { width: 52px; margin-bottom: 0.8rem; }
+  .rodape h3 { font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--salvia-escura); font-weight: 600; }
   .rodape p, .rodape li { font-size: 0.95rem; }
   .rodape .script { font-size: 1.35rem; }
   .rodape ul { list-style: none; padding: 0; margin: 0; }
+  .rodape li { margin-bottom: 0.2rem; }
   .rodape a { text-decoration: none; }
   .rodape a:hover { text-decoration: underline; }
-  .legal { border-top: 1px solid rgba(90, 69, 53, 0.15); margin-top: 2.5rem; padding-top: 1.5rem; font-size: 0.85rem; color: var(--texto-suave); }
+  .legal { border-top: 1px solid rgba(90, 69, 53, 0.15); margin-top: 2.5rem; padding-top: 1.5rem; font-size: 0.86rem; color: var(--texto-suave); }
   .legal p { margin-bottom: 0.5em; }
 </style>

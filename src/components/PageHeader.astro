@@ -1,12 +1,12 @@
 ---
+import { site } from '../data/site';
 interface Props { eyebrow: string; title: string; lead?: string; crumbs?: { href: string; label: string }[] }
 const { eyebrow, title, lead, crumbs = [] } = Astro.props;
-import { site } from '../data/site';
 const all = [{ href: '/', label: 'Início' }, ...crumbs];
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
-  itemListElement: [...all, { href: Astro.url.pathname, label: title }].map((c, i) => ({
+  itemListElement: [...all, { href: Astro.url.pathname, label: eyebrow }].map((c, i) => ({
     '@type': 'ListItem', position: i + 1, name: c.label, item: new URL(c.href, site.url).href,
   })),
 };
@@ -24,9 +24,9 @@ const schema = {
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 </section>
 <style>
-  .ph { padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(2rem, 4vw, 3rem); background: var(--areia-2); }
+  .ph { padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(2rem, 4vw, 3rem); background: var(--creme-claro); }
   .migalhas { font-size: 0.8rem; color: var(--texto-suave); margin-bottom: 1.6rem; }
   .migalhas a { text-decoration: none; color: var(--texto-suave); }
   .migalhas a:hover { color: var(--cafe); }
-  h1 { font-size: clamp(1.9rem, 4vw, 2.8rem); }
+  h1 { font-size: clamp(1.9rem, 4vw, 2.7rem); }
 </style>

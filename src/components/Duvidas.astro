@@ -1,0 +1,16 @@
+---
+import type { Duvida } from '../data/duvidas';
+interface Props { itens: Duvida[] }
+const { itens } = Astro.props;
+---
+<div class="duvidas">
+  {itens.map((d) => (
+    <details>
+      <summary>{d.q}</summary>
+      <div class="resp">
+        <p>{d.a}</p>
+        {d.post && <p><a href={d.post}>Leia o artigo completo →</a></p>}
+      </div>
+    </details>
+  ))}
+</div>

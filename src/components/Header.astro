@@ -1,7 +1,10 @@
 ---
-import { nav, whatsappLink } from '../data/site';
+import { getCollection } from 'astro:content';
+import { nav, site, whatsappLink } from '../data/site';
 const path = Astro.url.pathname;
 const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+const itens = posts.length >= site.blogNoMenuAPartirDe ? [...nav, { href: '/blog/', label: 'Blog' }] : nav;
 ---
 <header class="topo">
   <div class="wrap barra">
@@ -13,7 +16,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
     <label for="menu-toggle" class="menu-btn" aria-label="Abrir menu"><span></span><span></span><span></span></label>
     <nav aria-label="Principal">
       <ul>
-        {nav.map((item) => (
+        {itens.map((item) => (
           <li><a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a></li>
         ))}
       </ul>
@@ -23,12 +26,12 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
 </header>
 
 <style>
-  .topo { position: sticky; top: 0; z-index: 50; background: rgba(250, 246, 242, 0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--linha); }
-  .barra { display: flex; align-items: center; justify-content: space-between; min-height: 78px; gap: 1rem; }
+  .topo { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--linha); }
+  .barra { display: flex; align-items: center; justify-content: space-between; min-height: 76px; gap: 1rem; }
   .marca { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
   .marca img { width: 40px; height: auto; }
   .nome { display: flex; flex-direction: column; line-height: 1; }
-  .assinatura { font-family: var(--script); font-size: 1.65rem; color: #c49a92; }
+  .assinatura { font-family: var(--script); font-size: 1.65rem; color: #b98f86; }
   .tag { font-family: var(--titulo); font-size: 0.62rem; letter-spacing: 0.42em; text-transform: uppercase; color: var(--salvia-escura); margin-top: 0.25rem; padding-left: 0.15rem; }
   nav { display: flex; align-items: center; gap: 1.6rem; }
   nav ul { list-style: none; display: flex; gap: 1.4rem; margin: 0; padding: 0; }
@@ -41,10 +44,9 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
     .menu-btn { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; }
     .menu-btn span { width: 24px; height: 2px; background: var(--cafe); border-radius: 2px; transition: transform 0.2s; }
     nav { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 1rem;
-      background: var(--creme); padding: 1.2rem 1.25rem 1.6rem; border-bottom: 1px solid var(--linha); display: none; }
+      background: var(--branco); padding: 1.2rem 1.25rem 1.6rem; border-bottom: 1px solid var(--linha); display: none; }
     nav ul { flex-direction: column; gap: 0.2rem; }
     nav ul a { display: block; padding: 0.7rem 0; font-size: 1.05rem; border: 0; }
-    .agendar { justify-content: center; }
     .menu-toggle:checked ~ nav { display: flex; }
     .menu-toggle:checked + .menu-btn span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .menu-toggle:checked + .menu-btn span:nth-child(2) { opacity: 0; }

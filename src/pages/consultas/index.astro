@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import FaixaSabado from '../../components/FaixaSabado.astro';
+import Cta from '../../components/Cta.astro';
+import { consultas } from '../../data/site';
+---
+<Base title="Consultas: pré-natal, puericultura e queixas agudas" description="Pré-natal pediátrico, rotina e puericultura e queixas agudas. Consultas particulares de cerca de 1 hora, de segunda a sábado, no The Garden, em Piedade.">
+  <PageHeader eyebrow="Consultas" title="Cada consulta, um tempo para olhar a criança como um todo." lead="Cerca de 1 hora, com escuta, exame cuidadoso e um plano de cuidados para levar para casa." />
+  <section class="section">
+    <div class="wrap grid grid-3">
+      {consultas.map((c) => (
+        <a class="card servico" href={`/consultas/${c.slug}/`}>
+          <span class={`dot ${c.cor}`}></span>
+          <h2>{c.nome}</h2>
+          <p>{c.resumo}</p>
+          <span class="mais">Saiba mais →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+  <FaixaSabado compacta />
+  <Cta />
+</Base>
+<style>
+  .servico { text-decoration: none; color: inherit; display: block; transition: transform 0.2s ease; }
+  .servico:hover { transform: translateY(-4px); }
+  .servico h2 { font-size: 1.4rem; }
+  .servico p { color: var(--texto-suave); }
+  .mais { font-family: var(--titulo); font-size: 0.85rem; color: var(--dourado-texto); }
+</style>
