@@ -29,7 +29,14 @@ Ela não pesquisa como médica. Pesquisa como está se sentindo, muitas vezes de
 Padrões que funcionam:
 - **Pergunta direta:** "é normal…?", "quando…?", "com quantos meses…?", "o que fazer quando…?"
 - **Sintoma + idade:** "febre bebê 6 meses", "tosse criança 2 anos"
-- **Local**, nas páginas de serviço, não nos artigos: "pediatra Piedade", "pediatra perto de Boa Viagem"
+- **Local**, nas páginas de serviço, não nos artigos: "pediatra particular Boa Viagem", "pediatra perto de Boa Viagem", "pediatra Candeias", "pediatra Reserva do Paiva"
+
+## Público e território
+
+- **Bairros priorizados:** Boa Viagem (incluindo Setúbal), orla do Pina, Piedade, Candeias e Reserva do Paiva. A lista fica em `src/data/site.ts → regiao`.
+- **Público:** famílias A/B/C que escolhem pediatria particular.
+- **Como o texto atrai esse público:** pelo posicionamento, e não por exclusão. Usar termos como "particular", "consulta de 1 hora", "acompanhamento próximo", "do pré-natal à adolescência" e "pediatria baseada em evidências".
+- Nunca usar no site linguagem que exclua ou rotule público por renda.
 
 ## Checklist de cada post
 

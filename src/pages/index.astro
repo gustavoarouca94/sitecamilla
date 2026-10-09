@@ -13,7 +13,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 ---
-<Base title="Dra. Camilla Arouca · Pediatra em Piedade, perto de Boa Viagem" description={site.descricao}>
+<Base title="Dra. Camilla Arouca · Pediatra particular perto de Boa Viagem" description={site.descricao}>
   <section class="hero">
     <div class="wrap split rev">
       <div class="hero-texto">
@@ -64,7 +64,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
       <div>
         <span class="eyebrow left">O consultório</span>
         <h2>Eu não estava escolhendo apenas um consultório.</h2>
-        <p>Estava escolhendo o ambiente onde muitas famílias viveriam uma parte importante da infância dos seus filhos. A Unidade de Pediatria fica no <strong>The Garden Open Mall, em Piedade</strong>, a poucos minutos de Boa Viagem e do Paiva.</p>
+        <p>Estava escolhendo o ambiente onde muitas famílias viveriam uma parte importante da infância dos seus filhos. A Unidade de Pediatria fica no <strong>The Garden Open Mall, em Piedade</strong>, a poucos minutos de Boa Viagem, Candeias e da Reserva do Paiva.</p>
         <ul class="lista">
           <li>Natureza e espaço para brincar</li>
           <li>Estacionamento gratuito</li>

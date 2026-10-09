@@ -8,7 +8,7 @@ export const site = {
   rqe: 'RQE 8059',
   slogan: 'Clareza nas escolhas. Confiança no cuidado.',
   descricao:
-    'Pediatra em Piedade, Jaboatão dos Guararapes, pertinho de Boa Viagem. Puericultura, pré-natal pediátrico e consultas de 1 hora com pediatria baseada em evidências.',
+    'Pediatra particular em Piedade, pertinho de Boa Viagem. Consultas de 1 hora, puericultura e pré-natal pediátrico com acompanhamento próximo e pediatria baseada em evidências.',
   whatsapp: '5581900000000', // TODO: WhatsApp só com números (55 + DDD + número)
   whatsappTexto: 'Olá! Vim pelo site e gostaria de agendar uma consulta com a Dra. Camilla.',
   telefoneExibicao: '(81) 90000-0000', // TODO
@@ -32,7 +32,8 @@ export const site = {
     { dias: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], abre: '08:00', fecha: '18:00' }, // TODO
     { dias: ['Saturday'], abre: '08:00', fecha: '12:00' }, // TODO
   ],
-  regiao: ['Piedade', 'Boa Viagem', 'Candeias', 'Paiva', 'Zona Sul do Recife', 'Jaboatão dos Guararapes'],
+  // Área de atendimento priorizada: bairros com perfil de família que busca pediatria particular.
+  regiao: ['Boa Viagem', 'Setúbal', 'Pina', 'Piedade', 'Candeias', 'Reserva do Paiva'],
 };
 
 export const whatsappLink = (texto = site.whatsappTexto) =>
