@@ -17,13 +17,19 @@ SEO já configurado: título/descrição por página, URL canônica, Open Graph 
 
 ## Antes de publicar (TODO)
 
-1. **`src/data/site.ts`**: CRM, RQE, WhatsApp, rua/CEP, coordenadas, horários, link do Google Business.
+1. **`src/data/site.ts`**: WhatsApp, horários exatos, coordenadas exatas e, depois de criado, o link do perfil no Google Business.
 2. **Domínio**: registrar no Registro.br e atualizar em `site.ts`, `astro.config.mjs` e `public/robots.txt`.
-3. **Artigos iniciais** (`src/content/blog/`): rascunhos para a Dra. Camilla **revisar clinicamente**, especialmente o de febre (limiar de temperatura e sinais de alerta).
-4. **Consultas → FAQ**: confirmar a resposta sobre convênio/reembolso.
-5. **Sobre**: completar formação (pós-graduações, SBP/SOPEPE etc.).
-6. **Privacidade**: revisar o texto com assessoria jurídica.
-7. Revisar tudo à luz da **Resolução CFM 2.336/2023** (publicidade médica).
+3. **Sobre**: completar formação (pós-graduações, SBP/SOPEPE etc.).
+4. **Privacidade**: revisar o texto com assessoria jurídica.
+5. Revisar tudo à luz da **Resolução CFM 2.336/2023** (publicidade médica).
+
+## Blog
+
+O blog começa vazio e a página mostra um aviso de "em breve". Para criar posts:
+
+- **Guia de escrita e SEO:** `docs/guia-de-posts.md`
+- **Modelo:** `docs/modelo-de-post.mdx`. Copie para `src/content/blog/<url>.mdx`.
+- Ou escreva direto pelo painel `/keystatic`.
 
 ## Rodar localmente
 

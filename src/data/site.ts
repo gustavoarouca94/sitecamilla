@@ -4,8 +4,8 @@ export const site = {
   nome: 'Dra. Camilla Arouca',
   nomeCurto: 'Camilla Arouca',
   especialidade: 'Pediatra',
-  crm: 'CRM-PE 00000', // TODO: número do CRM
-  rqe: 'RQE 00000', // TODO: número do RQE em Pediatria (obrigatório ao divulgar a especialidade)
+  crm: 'CRM-PE 22927',
+  rqe: 'RQE 8059',
   slogan: 'Clareza nas escolhas. Confiança no cuidado.',
   descricao:
     'Pediatra em Piedade, Jaboatão dos Guararapes, pertinho de Boa Viagem. Puericultura, pré-natal pediátrico e consultas de 1 hora com pediatria baseada em evidências.',
@@ -15,15 +15,16 @@ export const site = {
   email: '', // opcional
   instagram: 'https://www.instagram.com/camillaarouca.pediatra/',
   instagramUser: '@camillaarouca.pediatra',
-  googleMaps: 'https://maps.google.com/?q=The+Garden+Open+Mall+Piedade+Jaboatao', // TODO: link do perfil no Google Business
+  // Quando o perfil no Google Business existir, trocar pelo link do perfil dela.
+  googleMaps: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('The Garden Open Mall, Av. Bernardo Vieira de Melo, 209, Piedade, Jaboatão dos Guararapes - PE'),
   endereco: {
     local: 'Unidade de Pediatria · The Garden Open Mall',
-    rua: '', // TODO: rua e número
+    rua: 'Av. Bernardo Vieira de Melo, 209',
     bairro: 'Piedade',
     cidade: 'Jaboatão dos Guararapes',
     uf: 'PE',
-    cep: '', // TODO
-    lat: -8.1757, // TODO: ajustar pelas coordenadas exatas do Google Maps
+    cep: '54400-000',
+    lat: -8.1757, // aproximado; ajustar pelas coordenadas exatas do Google Maps
     lng: -34.9178,
   },
   horarios: 'Segunda a sábado, com hora marcada',

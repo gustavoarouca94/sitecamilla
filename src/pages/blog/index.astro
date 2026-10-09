@@ -16,7 +16,14 @@ const categorias = [...new Set(posts.map((p) => p.data.category))];
           {categorias.map((c) => <a href={`/blog/categoria/${slugify(c)}/`}>{c}</a>)}
         </nav>
       )}
-      <div class="grid grid-3">{posts.map((p) => <PostCard post={p} />)}</div>
+      {posts.length > 0 ? (
+        <div class="grid grid-3">{posts.map((p) => <PostCard post={p} />)}</div>
+      ) : (
+        <div class="vazio center">
+          <img src="/img/elefante.png" alt="" width="80" height="94" />
+          <p class="lead">Os primeiros artigos estão sendo preparados com carinho. Enquanto isso, acompanhe as dicas no Instagram.</p>
+        </div>
+      )}
     </div>
   </section>
   <Cta />
@@ -25,4 +32,6 @@ const categorias = [...new Set(posts.map((p) => p.data.category))];
   .cats { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin-bottom: 2.4rem; }
   .cats a { font-family: var(--titulo); font-size: 0.85rem; text-decoration: none; padding: 0.5rem 1rem; border: 1px solid var(--linha); border-radius: 999px; background: var(--creme-2); }
   .cats a:hover { border-color: var(--dourado); }
+  .vazio img { width: 72px; margin: 0 auto 1rem; }
+  .vazio .lead { max-width: 520px; margin-inline: auto; }
 </style>
