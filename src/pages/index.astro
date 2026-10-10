@@ -8,7 +8,7 @@ import FaixaSabado from '../components/FaixaSabado.astro';
 import Duvidas from '../components/Duvidas.astro';
 import { site, consultas, whatsappLink } from '../data/site';
 import { duvidasDestaque, faqSchema } from '../data/duvidas';
-import retrato from '../assets/camilla-banco.jpg';
+import retrato from '../assets/camilla-retrato.jpg';
 import olhar from '../assets/camilla-olhar.jpg';
 import consultorio from '../assets/cantinho-casinha.jpg';
 import parquinho from '../assets/parquinho.jpg';
@@ -36,7 +36,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
         <p class="apoio">{site.nome} · Pediatra · Piedade, Jaboatão dos Guararapes<br />{site.crm} · {site.rqe}</p>
       </div>
       <div class="hero-foto">
-        <div class="arch"><Image src={retrato} alt="Dra. Camilla Arouca, pediatra, sentada em um banco no jardim do The Garden" widths={[400, 700, 1000]} sizes="(min-width: 860px) 460px, 90vw" loading="eager" fetchpriority="high" /></div>
+        <div class="arch"><Image src={retrato} alt="Dra. Camilla Arouca, pediatra, sorrindo em um jardim" widths={[400, 700, 1000]} sizes="(min-width: 860px) 460px, 90vw" loading="eager" fetchpriority="high" /></div>
       </div>
     </div>
   </section>
