@@ -18,7 +18,7 @@ export const site = {
   instagram: 'https://www.instagram.com/camillaarouca.pediatra/',
   instagramUser: '@camillaarouca.pediatra',
   doctoralia: 'https://www.doctoralia.com.br/camilla-arouca/pediatra/jaboatao-dos-guararapes',
-  pagamento: ['PIX', 'cartão de crédito', 'cartão de débito'],
+  pagamento: ['PIX', 'espécie'],
   idiomas: ['Português', 'Inglês'],
   // Quando o perfil no Google Business existir, trocar pelo link do perfil dela.
   googleMaps:
@@ -36,19 +36,7 @@ export const site = {
     lng: -34.9130135,
   },
   horarios: 'Segunda a sábado, conforme disponibilidade da agenda',
-  // Horários de atendimento no consultório (exibidos no site e enviados ao Google).
-  horariosAtendimento: [
-    { label: 'Segunda, terça e quarta', horas: '8h às 12h' },
-    { label: 'Quinta', horas: '14h às 18h' },
-    { label: 'Sexta', horas: '13h às 17h' },
-    { label: 'Sábado', horas: '8h às 12h' },
-  ],
-  horariosSchema: [
-    { dias: ['Monday', 'Tuesday', 'Wednesday'], abre: '08:00', fecha: '12:00' },
-    { dias: ['Thursday'], abre: '14:00', fecha: '18:00' },
-    { dias: ['Friday'], abre: '13:00', fecha: '17:00' },
-    { dias: ['Saturday'], abre: '08:00', fecha: '12:00' },
-  ],
+  // Os horários específicos não ficam no site: são informados na conversa de agendamento.
   // Área de atendimento priorizada: bairros com perfil de família que busca pediatria particular.
   regiao: ['Boa Viagem', 'Setúbal', 'Pina', 'Piedade', 'Candeias', 'Reserva do Paiva'],
   // O blog só entra no menu principal quando tiver pelo menos este número de posts publicados.

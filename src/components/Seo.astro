@@ -44,11 +44,8 @@ const physician = {
   },
   geo: { '@type': 'GeoCoordinates', latitude: e.lat, longitude: e.lng },
   areaServed: site.regiao.map((name) => ({ '@type': 'Place', name })),
-  openingHoursSpecification: site.horariosSchema.map((h) => ({
-    '@type': 'OpeningHoursSpecification', dayOfWeek: h.dias, opens: h.abre, closes: h.fecha,
-  })),
   sameAs: [site.instagram, site.doctoralia],
-  paymentAccepted: site.pagamento.join(', '),
+  paymentAccepted: 'PIX, dinheiro',
   knowsLanguage: ['pt-BR', 'en'],
   availableService: consultas.map((c) => ({ '@type': 'MedicalProcedure', name: c.nome, url: `${site.url}/consultas/${c.slug}/` })),
 };

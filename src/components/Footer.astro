@@ -18,9 +18,7 @@ const temPosts = (await getCollection('blog', ({ data }) => !data.draft)).length
     </div>
     <div>
       <h3>Atendimento</h3>
-      <ul class="horas">
-        {site.horariosAtendimento.map((h) => <li><span>{h.label}</span> {h.horas}</li>)}
-      </ul>
+      <p>{site.horarios}</p>
       <p><a href={whatsappLink()} target="_blank" rel="noopener">WhatsApp {site.telefoneExibicao}</a><br />
       <a href={site.doctoralia} target="_blank" rel="noopener">Agendar pelo Doctoralia (24h)</a><br />
       <a href={site.instagram} target="_blank" rel="noopener">{site.instagramUser}</a></p>

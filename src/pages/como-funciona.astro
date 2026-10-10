@@ -18,11 +18,11 @@ const mapaEmbed = `https://www.google.com/maps?q=${encodeURIComponent(`${e.local
     <div class="narrow">
       <h2 class="center">A consulta</h2>
       <dl class="tabela">
-        <div><dt>Horários</dt><dd><ul class="horas">{site.horariosAtendimento.map((h) => <li><strong>{h.label}:</strong> {h.horas}</li>)}</ul><span class="obs">Conforme a disponibilidade da agenda.</span></dd></div>
+        <div><dt>Dias</dt><dd>Segunda a sábado, conforme a disponibilidade da agenda. Os horários disponíveis são informados no agendamento.</dd></div>
         <div><dt>Duração</dt><dd>Cerca de 1 hora, podendo variar conforme a necessidade de cada criança e família</dd></div>
         <div><dt>Formato</dt><dd>Consulta particular. Não atendemos por convênios.</dd></div>
         <div><dt>Reembolso</dt><dd>Emitimos recibo. Se o seu plano de saúde oferece reembolso para consultas particulares, você pode solicitar diretamente à operadora, conforme as regras do plano.</dd></div>
-        <div><dt>Pagamento</dt><dd>{site.pagamento.join(', ').replace(/, ([^,]*)$/, ' ou $1')}</dd></div>
+        <div><dt>Pagamento</dt><dd>{site.pagamento.join(' ou ')}</dd></div>
         <div><dt>Retorno</dt><dd>Quando eu indicar uma reavaliação breve, em poucos dias, do mesmo quadro clínico, o atendimento é considerado retorno, sem novo pagamento. Uma nova queixa, uma nova doença ou uma avaliação fora do prazo combinado é uma nova consulta.</dd></div>
         <div><dt>Encaixe</dt><dd>Quando a criança precisar de avaliação por doença aguda, entre em contato para verificarmos a possibilidade de encaixe, conforme a disponibilidade da agenda. O encaixe não substitui o pronto atendimento.</dd></div>
         <div><dt>Agendamento</dt><dd>Pelo <a href={whatsappLink()} target="_blank" rel="noopener">WhatsApp {site.telefoneExibicao}</a>, {site.agendamentoWhatsapp}: diga o melhor dia e turno para sua família e verificamos os horários. Ou, a qualquer hora, pelo <a href={site.doctoralia} target="_blank" rel="noopener">Doctoralia</a>.</dd></div>
@@ -36,7 +36,7 @@ const mapaEmbed = `https://www.google.com/maps?q=${encodeURIComponent(`${e.local
       <h2 class="center" style="margin-top:3.5rem">O que levar no dia</h2>
       <ul class="lista levar">
         <li>Resumo de alta da maternidade, se o bebê for pequeno</li>
-        <li>Exames anteriores: triagem neonatal, exames de rotina ou de atendimentos de emergência</li>
+        <li>Exames anteriores (triagem neonatal, exames de rotina ou de urgência prévios, caso realizados)</li>
         <li>Caderneta de vacinação</li>
         <li>Receitas de medicações de uso contínuo ou prescritas em atendimentos de urgência</li>
         <li>Um caderninho ou bloco de notas com suas dúvidas</li>
@@ -71,6 +71,7 @@ const mapaEmbed = `https://www.google.com/maps?q=${encodeURIComponent(`${e.local
           <li>Sinais de desidratação, vômitos persistentes, recusa importante de líquidos ou piora rápida</li>
           <li>Qualquer situação em que a família perceba que a criança está gravemente doente</li>
         </ul>
+        <p class="nota">Esses são alguns exemplos, não uma lista completa. Se algo parecer grave, mesmo que não esteja aqui, procure atendimento.</p>
         <p><strong>Procure imediatamente o serviço de urgência.</strong> Você pode enviar uma mensagem para que eu saiba, mas não aguarde a resposta antes de buscar atendimento.</p>
       </div>
     </div>

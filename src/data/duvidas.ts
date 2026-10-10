@@ -23,7 +23,7 @@ export const temas: { titulo: string; id: string; itens: Duvida[] }[] = [
       },
       {
         q: 'Por que a consulta dura cerca de 1 hora?',
-        a: 'Porque cuidar bem leva tempo. Em uma hora, consigo ouvir suas dúvidas, conhecer o histórico, examinar com calma e avaliar alimentação, sono, desenvolvimento e vacinação. E você sai com um plano de cuidados por escrito.',
+        a: 'Em uma hora, consigo ouvir suas dúvidas, conhecer o histórico, examinar com calma e avaliar alimentação, sono, desenvolvimento e vacinação. E você sai com um plano de cuidados por escrito.',
         destaque: true,
         paginas: ['puericultura'],
       },
@@ -45,7 +45,7 @@ export const temas: { titulo: string; id: string; itens: Duvida[] }[] = [
       {
         q: 'Meu filho está com febre. Quando devo ir à emergência?',
         post: '/blog/quando-levar-crianca-ao-pronto-socorro/',
-        a: 'A febre é uma forma de o corpo se defender e, sozinha, nem sempre indica gravidade. Procure a emergência se houver dificuldade para respirar, criança muito sonolenta ou difícil de acordar, convulsão, sinais de desidratação, manchas na pele que não somem ao pressionar ou febre em bebês com menos de 3 meses. Nos outros casos, muitos quadros podem ser avaliados no consultório, que atende de segunda a sábado, conforme a agenda.',
+        a: 'A febre é uma forma de o corpo se defender e, sozinha, nem sempre indica gravidade. Procure a emergência, por exemplo, se houver dificuldade para respirar, criança muito sonolenta ou difícil de acordar, convulsão, sinais de desidratação, manchas na pele que não somem ao pressionar ou febre em bebês com menos de 3 meses. Esses são alguns exemplos, não uma lista completa: se a criança parecer gravemente doente, procure atendimento. Nos outros casos, muitos quadros podem ser avaliados no consultório, que atende de segunda a sábado, conforme a agenda.',
         destaque: true,
         paginas: ['queixas-agudas'],
       },
@@ -125,16 +125,16 @@ export const temas: { titulo: string; id: string; itens: Duvida[] }[] = [
       },
       {
         q: 'Quais são as formas de pagamento?',
-        a: 'PIX, cartão de crédito ou cartão de débito.',
+        a: 'PIX ou espécie.',
       },
       {
         q: 'A consulta tem retorno?',
         post: '/blog/consulta-de-puericultura-o-que-e/',
-        a: 'Quando eu indicar uma reavaliação breve, em poucos dias, do mesmo quadro clínico, o atendimento é considerado retorno e não há novo pagamento. Uma nova queixa, uma nova doença, a necessidade de exame físico ou uma avaliação fora do prazo combinado são consideradas uma nova consulta.',
+        a: 'Quando eu indicar uma reavaliação breve, em poucos dias, do mesmo quadro clínico, o atendimento é considerado retorno e não há novo pagamento. Uma nova queixa, uma nova doença ou uma avaliação fora do prazo combinado são consideradas uma nova consulta.',
       },
       {
         q: 'Você atende aos sábados?',
-        a: 'Sim. O atendimento é de segunda a quarta, das 8h às 12h; quinta, das 14h às 18h; sexta, das 13h às 17h; e sábado, das 8h às 12h, conforme a disponibilidade da agenda.',
+        a: 'Sim, de segunda a sábado, conforme a disponibilidade da agenda. Os horários disponíveis são informados no agendamento.',
         paginas: ['queixas-agudas'],
       },
       {
