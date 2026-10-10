@@ -44,6 +44,7 @@ export const temas: { titulo: string; id: string; itens: Duvida[] }[] = [
     itens: [
       {
         q: 'Meu filho está com febre. Quando devo ir à emergência?',
+        post: '/blog/quando-levar-crianca-ao-pronto-socorro/',
         a: 'A febre é uma forma de o corpo se defender e, sozinha, nem sempre indica gravidade. Procure a emergência se houver dificuldade para respirar, criança muito sonolenta ou difícil de acordar, convulsão, sinais de desidratação, manchas na pele que não somem ao pressionar ou febre em bebês com menos de 3 meses. Nos outros casos, muitos quadros podem ser avaliados no consultório, que atende de segunda a sábado, conforme a agenda.',
         destaque: true,
         paginas: ['queixas-agudas'],
@@ -128,6 +129,7 @@ export const temas: { titulo: string; id: string; itens: Duvida[] }[] = [
       },
       {
         q: 'A consulta tem retorno?',
+        post: '/blog/consulta-de-puericultura-o-que-e/',
         a: 'Quando eu indicar uma reavaliação breve, em poucos dias, do mesmo quadro clínico, o atendimento é considerado retorno e não há novo pagamento. Uma nova queixa, uma nova doença, a necessidade de exame físico ou uma avaliação fora do prazo combinado são consideradas uma nova consulta.',
       },
       {
@@ -142,6 +144,7 @@ export const temas: { titulo: string; id: string; itens: Duvida[] }[] = [
       },
       {
         q: 'Posso tirar dúvidas pelo WhatsApp depois da consulta?',
+        post: '/blog/como-mandar-mensagem-para-a-pediatra/',
         a: 'O WhatsApp é um canal de apoio, e as mensagens são respondidas assim que possível. Ele não substitui consulta, exame físico, teleconsulta formal ou atendimento de urgência. Quando surgirem muitas dúvidas, o melhor é anotá-las para esclarecermos juntos na próxima consulta.',
         paginas: ['puericultura'],
       },

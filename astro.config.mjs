@@ -6,6 +6,10 @@ import react from '@astrojs/react';
 import keystatic from '@keystatic/astro';
 import vercel from '@astrojs/vercel';
 
+// Painel /keystatic: sempre no `npm run dev`; em produção só quando o GitHub App estiver configurado
+// (variável PUBLIC_KEYSTATIC_REPO na Vercel). Sem isso, o painel não é publicado.
+const comPainel = process.argv.includes('dev') || Boolean(process.env.PUBLIC_KEYSTATIC_REPO);
+
 export default defineConfig({
   site: 'https://www.camillaarouca.com.br', // manter igual a src/data/site.ts
   trailingSlash: 'ignore', // 'always' quebra as rotas /api/keystatic do painel
@@ -15,7 +19,7 @@ export default defineConfig({
   integrations: [
     mdx(),
     react(),
-    keystatic(),
+    ...(comPainel ? [keystatic()] : []),
     sitemap({
       filter: (page) => !page.includes('/keystatic') && !page.includes('/api/'),
       i18n: { defaultLocale: 'pt-BR', locales: { 'pt-BR': 'pt-BR' } },

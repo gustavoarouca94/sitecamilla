@@ -1,5 +1,8 @@
 // Dados centrais do site. Itens marcados com TODO precisam ser preenchidos antes de publicar.
 export const site = {
+  // Pré-lançamento: enquanto false, o site fica fora do Google (noindex + robots bloqueando tudo).
+  // Trocar para true quando WhatsApp, horários e domínio estiverem definidos.
+  lancado: false,
   url: 'https://www.camillaarouca.com.br', // TODO: confirmar domínio registrado no Registro.br
   nome: 'Dra. Camilla Arouca',
   nomeCurto: 'Camilla Arouca',

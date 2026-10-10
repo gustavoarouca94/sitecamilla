@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /keystatic/
-Disallow: /api/
-
-Sitemap: https://www.camillaarouca.com.br/sitemap-index.xml

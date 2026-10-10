@@ -16,7 +16,8 @@ interface Props {
   publishedTime?: Date;
   modifiedTime?: Date;
 }
-const props = Astro.props;
+import { site } from '../data/site';
+const props = { ...Astro.props, noindex: Astro.props.noindex || !site.lancado };
 
 // Fonte manuscrita da marca: basta colocar o arquivo em public/fonts/featherly.woff2 (ver README).
 // Sem o arquivo, o site usa a Satisfy, de estilo parecido.
