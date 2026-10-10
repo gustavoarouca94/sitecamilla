@@ -3,7 +3,7 @@ export const site = {
   // Pré-lançamento: enquanto false, o site fica fora do Google (noindex + robots bloqueando tudo).
   // Trocar para true quando WhatsApp, horários e domínio estiverem definidos.
   lancado: false,
-  url: 'https://www.camillaarouca.com.br', // TODO: confirmar domínio registrado no Registro.br
+  url: 'https://www.camillaaroucapediatra.com.br',
   nome: 'Dra. Camilla Arouca',
   nomeCurto: 'Camilla Arouca',
   especialidade: 'Pediatra',

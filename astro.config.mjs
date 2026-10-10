@@ -11,7 +11,7 @@ import vercel from '@astrojs/vercel';
 const comPainel = process.argv.includes('dev') || Boolean(process.env.PUBLIC_KEYSTATIC_REPO);
 
 export default defineConfig({
-  site: 'https://www.camillaarouca.com.br', // manter igual a src/data/site.ts
+  site: 'https://www.camillaaroucapediatra.com.br', // manter igual a src/data/site.ts
   trailingSlash: 'ignore', // 'always' quebra as rotas /api/keystatic do painel
   // Páginas são estáticas (ótimo para SEO); só o painel /keystatic roda sob demanda na Vercel.
   output: 'static',
