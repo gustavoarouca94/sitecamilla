@@ -14,6 +14,9 @@ export const site = {
   telefoneExibicao: '(81) 90000-0000', // TODO
   instagram: 'https://www.instagram.com/camillaarouca.pediatra/',
   instagramUser: '@camillaarouca.pediatra',
+  doctoralia: 'https://www.doctoralia.com.br/camilla-arouca/pediatra/jaboatao-dos-guararapes',
+  pagamento: ['PIX', 'cartão de crédito', 'cartão de débito'],
+  idiomas: ['Português', 'Inglês'],
   // Quando o perfil no Google Business existir, trocar pelo link do perfil dela.
   googleMaps:
     'https://www.google.com/maps/search/?api=1&query=' +
@@ -26,8 +29,8 @@ export const site = {
     cidade: 'Jaboatão dos Guararapes',
     uf: 'PE',
     cep: '54400-000',
-    lat: -8.1757, // aproximado; ajustar pelas coordenadas exatas do Google Maps
-    lng: -34.9178,
+    lat: -8.1609945, // coordenadas do perfil no Doctoralia
+    lng: -34.9130135,
   },
   horarios: 'Segunda a sábado, conforme disponibilidade da agenda',
   horariosSchema: [

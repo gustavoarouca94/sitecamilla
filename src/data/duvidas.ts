@@ -123,9 +123,27 @@ export const temas: { titulo: string; id: string; itens: Duvida[] }[] = [
         a: 'Não. A consulta é particular e não atendemos por convênios. Emitimos recibo: se o seu plano oferece reembolso para consultas particulares, você pode solicitar diretamente à operadora, conforme as regras do plano.',
       },
       {
+        q: 'Quais são as formas de pagamento?',
+        a: 'PIX, cartão de crédito ou cartão de débito.',
+      },
+      {
+        q: 'A consulta tem retorno?',
+        a: 'Quando eu indicar uma reavaliação breve, em poucos dias, do mesmo quadro clínico, o atendimento é considerado retorno e não há novo pagamento. Uma nova queixa, uma nova doença, a necessidade de exame físico ou uma avaliação fora do prazo combinado são consideradas uma nova consulta.',
+      },
+      {
         q: 'Você atende aos sábados?',
         a: 'Sim, de segunda a sábado, conforme a disponibilidade da agenda.',
         paginas: ['queixas-agudas'],
+      },
+      {
+        q: 'Meu filho adoeceu. Consigo um horário rápido?',
+        a: 'Entre em contato para verificarmos a possibilidade de encaixe, conforme a disponibilidade da agenda. O encaixe não substitui o pronto atendimento: diante de sinais de gravidade ou necessidade de avaliação imediata, procure diretamente um serviço de urgência.',
+        paginas: ['queixas-agudas'],
+      },
+      {
+        q: 'Posso tirar dúvidas pelo WhatsApp depois da consulta?',
+        a: 'O WhatsApp é um canal de apoio, e as mensagens são respondidas assim que possível. Ele não substitui consulta, exame físico, teleconsulta formal ou atendimento de urgência. Quando surgirem muitas dúvidas, o melhor é anotá-las para esclarecermos juntos na próxima consulta.',
+        paginas: ['puericultura'],
       },
       {
         q: 'O pai, os avós ou a rede de apoio podem participar?',
@@ -136,7 +154,6 @@ export const temas: { titulo: string; id: string; itens: Duvida[] }[] = [
         q: 'Como agendar?',
         a: 'Pelo WhatsApp. Diga o melhor dia e turno para sua família e verificamos os horários disponíveis.',
       },
-      // TODO: definir com a Dra. Camilla como as famílias tiram dúvidas depois da consulta e incluir aqui.
     ],
   },
 ];

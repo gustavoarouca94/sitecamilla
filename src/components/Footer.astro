@@ -20,7 +20,8 @@ const temPosts = (await getCollection('blog', ({ data }) => !data.draft)).length
       <h3>Atendimento</h3>
       <p>{site.horarios}</p>
       <p><a href={whatsappLink()} target="_blank" rel="noopener">Agendar pelo WhatsApp</a><br />
-      <a href={site.instagram} target="_blank" rel="noopener">{site.instagramUser}</a></p>
+      <a href={site.instagram} target="_blank" rel="noopener">{site.instagramUser}</a><br />
+      <a href={site.doctoralia} target="_blank" rel="noopener">Avaliações no Doctoralia</a></p>
     </div>
     <div>
       <h3>Navegue</h3>

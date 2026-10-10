@@ -20,7 +20,8 @@ const person = {
     { '@type': 'Hospital', name: 'Hospital Barão de Lucena' },
   ],
   worksFor: { '@id': `${site.url}/#medica` },
-  sameAs: [site.instagram],
+  sameAs: [site.instagram, site.doctoralia],
+  knowsLanguage: ['pt-BR', 'en'],
   url: `${site.url}/sobre/`,
 };
 ---
@@ -45,7 +46,11 @@ const person = {
             <tr><td>Residência em Pediatria, Hospital Barão de Lucena</td><td>2015–2017</td></tr>
           </tbody>
         </table>
-        <p>Experiência em emergências pediátricas, acompanhamento de crianças internadas, ambulatório de pediatria e preceptoria de residentes de Pediatria.</p>
+        <p>Experiência em emergências pediátricas, acompanhamento de crianças internadas, ambulatório de pediatria, puericultura, preceptoria de residentes de Pediatria e gestão em saúde.</p>
+        <h3>Publicação</h3>
+        <p>Gestão estratégica das doenças respiratórias sazonais na pediatria do Hospital Barão de Lucena, com foco em qualidade e segurança do paciente (CPIIS).</p>
+        <h3>Idiomas</h3>
+        <p>{site.idiomas.join(' e ')}</p>
         <p><strong>{site.crm} · {site.rqe}</strong></p>
       </div>
     </div>

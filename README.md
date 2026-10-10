@@ -31,8 +31,8 @@ O guia visual usa a Featherly nas frases manuscritas. Coloque o arquivo em `publ
 
 ## Antes de publicar (TODO)
 
+1. **Posts em rascunho** (`src/content/blog/`, `draft: true`): revisão clínica da Dra. Camilla; depois trocar para `draft: false` e preencher `post:` nas dúvidas relacionadas em `duvidas.ts`.
 1. **`src/data/site.ts`**: WhatsApp, horários exatos, coordenadas exatas e, depois de criado, o link do perfil no Google Business.
-2. **`src/data/duvidas.ts`**: incluir a regra de dúvidas pós-consulta (há um TODO marcado).
 3. **Domínio**: registrar no Registro.br e atualizar em `site.ts`, `astro.config.mjs` e `public/robots.txt`.
 4. **Privacidade**: revisar o texto com assessoria jurídica.
 5. Revisar tudo à luz da **Resolução CFM 2.336/2023** (publicidade médica).

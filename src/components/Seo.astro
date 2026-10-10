@@ -47,7 +47,9 @@ const physician = {
   openingHoursSpecification: site.horariosSchema.map((h) => ({
     '@type': 'OpeningHoursSpecification', dayOfWeek: h.dias, opens: h.abre, closes: h.fecha,
   })),
-  sameAs: [site.instagram],
+  sameAs: [site.instagram, site.doctoralia],
+  paymentAccepted: site.pagamento.join(', '),
+  knowsLanguage: ['pt-BR', 'en'],
   availableService: consultas.map((c) => ({ '@type': 'MedicalProcedure', name: c.nome, url: `${site.url}/consultas/${c.slug}/` })),
 };
 const website = {
