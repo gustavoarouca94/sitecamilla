@@ -52,7 +52,7 @@ export const site = {
   // Área de atendimento priorizada: bairros com perfil de família que busca pediatria particular.
   regiao: ['Boa Viagem', 'Setúbal', 'Pina', 'Piedade', 'Candeias', 'Reserva do Paiva'],
   // O blog só entra no menu principal quando tiver pelo menos este número de posts publicados.
-  blogNoMenuAPartirDe: 4,
+  blogNoMenuAPartirDe: 1,
 };
 
 export const whatsappLink = (texto = site.whatsappTexto) =>

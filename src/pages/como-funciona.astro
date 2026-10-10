@@ -4,9 +4,9 @@ import Base from '../layouts/Base.astro';
 import PageHeader from '../components/PageHeader.astro';
 import Cta from '../components/Cta.astro';
 import { site, whatsappLink } from '../data/site';
-import consultorio from '../assets/consultorio.jpg';
-import parquinho from '../assets/parquinho.jpg';
-import miniPaciente from '../assets/brinquedos.jpg';
+import consultorio from '../assets/consultorio-maca.jpg';
+import tapete from '../assets/tapete.jpg';
+import portaFadas from '../assets/porta-fadas.jpg';
 import caminho from '../assets/caminho.jpg';
 const e = site.endereco;
 const mapaEmbed = `https://www.google.com/maps?q=${encodeURIComponent(`${e.local}, ${e.rua}, ${e.bairro}, ${e.cidade}`)}&output=embed`;
@@ -79,9 +79,9 @@ const mapaEmbed = `https://www.google.com/maps?q=${encodeURIComponent(`${e.local
   <section class="section creme" id="espaco">
     <div class="wrap split">
       <div class="galeria">
-        <div class="arch g1"><Image src={consultorio} alt="Sala de consulta pediátrica com maca, balança e móveis em madeira clara" widths={[400, 800]} sizes="(min-width: 860px) 320px, 60vw" /></div>
-        <div class="foto g2"><Image src={parquinho} alt="Parquinho a céu aberto com escorregador entre árvores" widths={[300, 600]} sizes="(min-width: 860px) 220px, 40vw" /></div>
-        <div class="foto g3"><Image src={miniPaciente} alt="Mini paciente: boneco usado para explicar o exame às crianças" widths={[300, 600]} sizes="(min-width: 860px) 220px, 40vw" /></div>
+        <div class="arch g1"><Image src={consultorio} alt="Consultório com maca, armários em madeira clara e parede em forma de casinha" widths={[400, 800]} sizes="(min-width: 860px) 320px, 60vw" /></div>
+        <div class="foto g2"><Image src={tapete} alt="Tapete de brincar com bichinhos da floresta no chão do consultório" widths={[300, 600]} sizes="(min-width: 860px) 220px, 40vw" /></div>
+        <div class="foto g3"><Image src={portaFadas} alt="Pequena porta de fadas rosa no rodapé do armário" widths={[300, 600]} sizes="(min-width: 860px) 220px, 40vw" /></div>
       </div>
       <div>
         <span class="eyebrow">O espaço</span>

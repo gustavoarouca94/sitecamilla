@@ -9,8 +9,8 @@ const itens = posts.length >= site.blogNoMenuAPartirDe ? [...nav, { href: '/blog
 <header class="topo">
   <div class="wrap barra">
     <a href="/" class="marca" aria-label="Dra. Camilla Arouca, pediatra — página inicial">
-      <img src="/img/elefante.png" alt="" width="40" height="47" />
-      <span class="nome"><span class="assinatura">Camilla Arouca</span><span class="tag">Pediatra</span></span>
+      <img class="elefante" src="/img/elefante-hd.png" alt="" width="40" height="46" />
+      <img class="assinatura" src="/img/assinatura.png" alt="Camilla Arouca Pediatra" width="225" height="46" />
     </a>
     <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-hidden="true" />
     <label for="menu-toggle" class="menu-btn" aria-label="Abrir menu"><span></span><span></span><span></span></label>
@@ -29,10 +29,9 @@ const itens = posts.length >= site.blogNoMenuAPartirDe ? [...nav, { href: '/blog
   .topo { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--linha); }
   .barra { display: flex; align-items: center; justify-content: space-between; min-height: 76px; gap: 1rem; }
   .marca { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
-  .marca img { width: 40px; height: auto; }
-  .nome { display: flex; flex-direction: column; line-height: 1; }
-  .assinatura { font-family: var(--script); font-size: 1.65rem; color: #b98f86; }
-  .tag { font-family: var(--titulo); font-size: 0.62rem; letter-spacing: 0.42em; text-transform: uppercase; color: var(--salvia-escura); margin-top: 0.25rem; padding-left: 0.15rem; }
+  .elefante { width: 40px; height: auto; }
+  .assinatura { width: 225px; height: auto; }
+  @media (max-width: 520px) { .assinatura { width: 185px; } .elefante { width: 34px; } }
   nav { display: flex; align-items: center; gap: 1.6rem; }
   nav ul { list-style: none; display: flex; gap: 1.4rem; margin: 0; padding: 0; }
   nav ul a { font-family: var(--titulo); font-size: 0.92rem; text-decoration: none; color: var(--texto); padding: 0.3rem 0; border-bottom: 1.5px solid transparent; }
@@ -40,7 +39,7 @@ const itens = posts.length >= site.blogNoMenuAPartirDe ? [...nav, { href: '/blog
   .agendar { padding: 0.7rem 1.2rem; font-size: 0.85rem; }
   .menu-toggle, .menu-btn { display: none; }
 
-  @media (max-width: 960px) {
+  @media (max-width: 1100px) {
     .menu-btn { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; }
     .menu-btn span { width: 24px; height: 2px; background: var(--cafe); border-radius: 2px; transition: transform 0.2s; }
     nav { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 1rem;
