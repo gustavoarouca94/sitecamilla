@@ -36,7 +36,7 @@ Enquanto `lancado: false` em `src/data/site.ts`, o site fica no ar mas fora do G
 ## Antes de lançar (TODO)
 
 1. **`src/data/site.ts`**: WhatsApp, horários exatos e, depois de criado, o link do perfil no Google Business.
-2. **Domínio**: registrar no Registro.br e atualizar em `site.ts`, `astro.config.mjs` e `public/robots.txt`.
+2. **Domínio**: registrar no Registro.br e atualizar em `site.ts` e `astro.config.mjs`.
 3. **Privacidade**: revisar o texto com assessoria jurídica.
 4. Revisar tudo à luz da **Resolução CFM 2.336/2023** (publicidade médica).
 
