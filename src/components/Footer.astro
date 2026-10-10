@@ -18,10 +18,12 @@ const temPosts = (await getCollection('blog', ({ data }) => !data.draft)).length
     </div>
     <div>
       <h3>Atendimento</h3>
-      <p>{site.horarios}</p>
-      <p><a href={whatsappLink()} target="_blank" rel="noopener">Agendar pelo WhatsApp</a><br />
-      <a href={site.instagram} target="_blank" rel="noopener">{site.instagramUser}</a><br />
-      <a href={site.doctoralia} target="_blank" rel="noopener">Avaliações no Doctoralia</a></p>
+      <ul class="horas">
+        {site.horariosAtendimento.map((h) => <li><span>{h.label}</span> {h.horas}</li>)}
+      </ul>
+      <p><a href={whatsappLink()} target="_blank" rel="noopener">WhatsApp {site.telefoneExibicao}</a><br />
+      <a href={site.doctoralia} target="_blank" rel="noopener">Agendar pelo Doctoralia (24h)</a><br />
+      <a href={site.instagram} target="_blank" rel="noopener">{site.instagramUser}</a></p>
     </div>
     <div>
       <h3>Navegue</h3>
@@ -48,6 +50,8 @@ const temPosts = (await getCollection('blog', ({ data }) => !data.draft)).length
   .rodape .script { font-size: 1.35rem; }
   .rodape ul { list-style: none; padding: 0; margin: 0; }
   .rodape li { margin-bottom: 0.2rem; }
+  .horas { margin-bottom: 1rem !important; }
+  .horas span { color: var(--texto-suave); }
   .rodape a { text-decoration: none; }
   .rodape a:hover { text-decoration: underline; }
   .legal { border-top: 1px solid rgba(90, 69, 53, 0.15); margin-top: 2.5rem; padding-top: 1.5rem; font-size: 0.86rem; color: var(--texto-suave); }

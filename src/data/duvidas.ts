@@ -134,7 +134,7 @@ export const temas: { titulo: string; id: string; itens: Duvida[] }[] = [
       },
       {
         q: 'Você atende aos sábados?',
-        a: 'Sim, de segunda a sábado, conforme a disponibilidade da agenda.',
+        a: 'Sim. O atendimento é de segunda a quarta, das 8h às 12h; quinta, das 14h às 18h; sexta, das 13h às 17h; e sábado, das 8h às 12h, conforme a disponibilidade da agenda.',
         paginas: ['queixas-agudas'],
       },
       {
@@ -155,7 +155,7 @@ export const temas: { titulo: string; id: string; itens: Duvida[] }[] = [
       },
       {
         q: 'Como agendar?',
-        a: 'Pelo WhatsApp. Diga o melhor dia e turno para sua família e verificamos os horários disponíveis.',
+        a: 'Pelo WhatsApp (81) 98167-3755, em horário comercial: diga o melhor dia e turno para sua família e verificamos os horários disponíveis. Se preferir, o agendamento também pode ser feito a qualquer hora pelo Doctoralia.',
       },
     ],
   },

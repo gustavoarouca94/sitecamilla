@@ -29,16 +29,14 @@ SEO configurado: título e descrição por página, URL canônica, preview no Wh
 
 O guia visual usa a Featherly nas frases manuscritas. Coloque o arquivo em `public/fonts/featherly.woff2` e o site passa a usá-la automaticamente. Se a fonte estiver em `.otf` ou `.ttf`, converta para `.woff2`. Confirme antes se a licença permite uso na web. Sem o arquivo, o site usa a Satisfy.
 
-## Pré-lançamento
+## Lançamento
 
-Enquanto `lancado: false` em `src/data/site.ts`, o site fica no ar mas fora do Google (meta `noindex` e `robots.txt` bloqueando tudo). Troque para `true` quando WhatsApp, horários e domínio estiverem definidos.
+O site está lançado (`lancado: true` em `src/data/site.ts`). Trocar para `false` tira o site do Google (noindex + robots.txt bloqueando), útil só em manutenção.
 
-## Antes de lançar (TODO)
-
-1. **`src/data/site.ts`**: WhatsApp, horários exatos e, depois de criado, o link do perfil no Google Business.
-2. **Domínio** `www.camillaaroucapediatra.com.br`: registrado; apontar o DNS para a Vercel.
-3. **Privacidade**: revisar o texto com assessoria jurídica.
-4. Revisar tudo à luz da **Resolução CFM 2.336/2023** (publicidade médica).
+Pendências:
+1. Link do perfil no Google Business em `site.ts → googleMaps`, quando o perfil existir.
+2. Revisar a política de privacidade com assessoria jurídica.
+3. Conferir os textos à luz da **Resolução CFM 2.336/2023** (publicidade médica).
 
 ## Blog
 

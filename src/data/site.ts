@@ -1,8 +1,7 @@
-// Dados centrais do site. Itens marcados com TODO precisam ser preenchidos antes de publicar.
+// Dados centrais do site.
 export const site = {
-  // Pré-lançamento: enquanto false, o site fica fora do Google (noindex + robots bloqueando tudo).
-  // Trocar para true quando WhatsApp, horários e domínio estiverem definidos.
-  lancado: false,
+  // Com false, o site sai do Google (noindex + robots bloqueando tudo). Útil só para manutenção.
+  lancado: true,
   url: 'https://www.camillaaroucapediatra.com.br',
   nome: 'Dra. Camilla Arouca',
   nomeCurto: 'Camilla Arouca',
@@ -12,9 +11,10 @@ export const site = {
   slogan: 'Clareza nas escolhas. Confiança no cuidado.',
   descricao:
     'Pediatria baseada em evidências, com tempo e acolhimento. Consultas particulares de segunda a sábado no The Garden, em Piedade, perto de Boa Viagem.',
-  whatsapp: '5581900000000', // TODO: WhatsApp só com números (55 + DDD + número)
+  whatsapp: '5581981673755',
   whatsappTexto: 'Olá! Vim pelo site e gostaria de agendar uma consulta com a Dra. Camilla.',
-  telefoneExibicao: '(81) 90000-0000', // TODO
+  telefoneExibicao: '(81) 98167-3755',
+  agendamentoWhatsapp: 'em horário comercial',
   instagram: 'https://www.instagram.com/camillaarouca.pediatra/',
   instagramUser: '@camillaarouca.pediatra',
   doctoralia: 'https://www.doctoralia.com.br/camilla-arouca/pediatra/jaboatao-dos-guararapes',
@@ -36,9 +36,18 @@ export const site = {
     lng: -34.9130135,
   },
   horarios: 'Segunda a sábado, conforme disponibilidade da agenda',
+  // Horários de atendimento no consultório (exibidos no site e enviados ao Google).
+  horariosAtendimento: [
+    { label: 'Segunda, terça e quarta', horas: '8h às 12h' },
+    { label: 'Quinta', horas: '14h às 18h' },
+    { label: 'Sexta', horas: '13h às 17h' },
+    { label: 'Sábado', horas: '8h às 12h' },
+  ],
   horariosSchema: [
-    { dias: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], abre: '08:00', fecha: '18:00' }, // TODO
-    { dias: ['Saturday'], abre: '08:00', fecha: '12:00' }, // TODO
+    { dias: ['Monday', 'Tuesday', 'Wednesday'], abre: '08:00', fecha: '12:00' },
+    { dias: ['Thursday'], abre: '14:00', fecha: '18:00' },
+    { dias: ['Friday'], abre: '13:00', fecha: '17:00' },
+    { dias: ['Saturday'], abre: '08:00', fecha: '12:00' },
   ],
   // Área de atendimento priorizada: bairros com perfil de família que busca pediatria particular.
   regiao: ['Boa Viagem', 'Setúbal', 'Pina', 'Piedade', 'Candeias', 'Reserva do Paiva'],
