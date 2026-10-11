@@ -4,7 +4,7 @@ Como transformar um material da Dra. Camilla (texto, roteiro de Reels, carrossel
 
 ## Fluxo
 
-1. **Material bruto** → enviado no chat.
+1. **Material bruto** → a Dra. Camilla preenche o formulário do documento "Modelo de post para o blog" e o Gustavo envia no chat.
 2. **Proposta de SEO** → antes de escrever, definimos:
    - a busca principal (como a mãe digitaria no Google);
    - 3 a 5 buscas relacionadas;
@@ -12,7 +12,8 @@ Como transformar um material da Dra. Camilla (texto, roteiro de Reels, carrossel
    - estrutura de subtítulos (H2) e perguntas frequentes.
 3. **Texto** → escrito no tom da marca a partir do material, sem acrescentar conteúdo clínico que não esteja nele.
 4. **Revisão clínica** da Dra. Camilla.
-5. **Publicação** → arquivo `.mdx` em `src/content/blog/` (ou pelo painel `/keystatic`). Commit → Vercel publica.
+5. **Publicação** → arquivo `.mdx` em `src/content/blog/`, `draft: false`. Commit e push na `main` → a Vercel publica em ~1 min.
+6. **Distribuição** → postagem "Novidade" no Google Meu Negócio (2–3 frases + link) e legenda para o Instagram.
 
 ## Como a mãe pesquisa
 
@@ -67,6 +68,14 @@ Padrões que funcionam:
 **Perguntas frequentes (2–4)**
 - Perguntas reais de consultório e da caixinha do Instagram.
 - Respostas curtas, de 1–2 frases. Podem aparecer em destaque no Google.
+
+**Regras definidas pela Dra. Camilla**
+- Não citar horários de atendimento (são informados no agendamento) nem preço.
+- Pagamento, quando citado: PIX ou espécie.
+- Listas de sinais de alerta são sempre **exemplos**, com aviso de que não são completas.
+- Evitar frases que soem como crítica a colegas (ex.: "cuidar bem leva tempo" ao falar da duração da consulta).
+- Retorno inclui exame físico; nova consulta = nova queixa, nova doença ou avaliação fora do prazo combinado.
+- Não incluir fotos de regiões íntimas nem orientar o envio delas.
 
 **Publicidade médica (Resolução CFM 2.336/2023)**
 - Sem promessa de resultado, sem "melhor pediatra", sem preço no post.
