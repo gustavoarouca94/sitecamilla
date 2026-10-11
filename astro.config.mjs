@@ -26,4 +26,9 @@ export default defineConfig({
     }),
   ],
   image: { responsiveStyles: true },
+  // Atalhos curtos com rastreio (para Google Meu Negócio, Instagram etc.).
+  redirects: {
+    '/gmn': { status: 302, destination: '/?utm_source=google&utm_medium=perfil&utm_campaign=gmn' },
+    '/insta': { status: 302, destination: '/?utm_source=instagram&utm_medium=bio&utm_campaign=perfil' },
+  },
 });
