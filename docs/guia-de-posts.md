@@ -75,7 +75,6 @@ Padrões que funcionam:
 - Listas de sinais de alerta são sempre **exemplos**, com aviso de que não são completas.
 - Evitar frases que soem como crítica a colegas (ex.: "cuidar bem leva tempo" ao falar da duração da consulta).
 - Retorno inclui exame físico; nova consulta = nova queixa, nova doença ou avaliação fora do prazo combinado.
-- Não incluir fotos de regiões íntimas nem orientar o envio delas.
 
 **Publicidade médica (Resolução CFM 2.336/2023)**
 - Sem promessa de resultado, sem "melhor pediatra", sem preço no post.
