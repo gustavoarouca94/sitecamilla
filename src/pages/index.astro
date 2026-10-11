@@ -10,7 +10,7 @@ import { site, consultas, whatsappLink } from '../data/site';
 import { duvidasDestaque, faqSchema } from '../data/duvidas';
 import retrato from '../assets/camilla-retrato.jpg';
 import olhar from '../assets/camilla-olhar.jpg';
-import consultorio from '../assets/cantinho-casinha.jpg';
+import consultorio from '../assets/consultorio-mesa.jpg';
 import parquinho from '../assets/parquinho.jpg';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
@@ -115,7 +115,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
         <a class="btn btn-ghost" href="/como-funciona/#espaco">Conhecer o espaço</a>
       </div>
       <div class="fotos">
-        <div class="arch f1"><Image src={consultorio} alt="Cantinho de brincar do consultório: parede em forma de casinha com brinquedos educativos" widths={[400, 700]} sizes="(min-width: 860px) 300px, 55vw" /></div>
+        <div class="arch f1"><Image src={consultorio} alt="Consultório pediátrico com mesa, poltronas, maca, balança e cantinho infantil" widths={[400, 700]} sizes="(min-width: 860px) 300px, 55vw" /></div>
         <div class="foto f2"><Image src={parquinho} alt="Parquinho com escorregador entre as árvores do The Garden" widths={[300, 500]} sizes="(min-width: 860px) 220px, 40vw" /></div>
       </div>
     </div>
