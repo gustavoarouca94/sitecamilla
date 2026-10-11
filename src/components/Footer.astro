@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import { site, nav, consultas, whatsappLink } from '../data/site';
 const ano = new Date().getFullYear();
 const e = site.endereco;
+const temMedicao = Boolean(site.medicao.ga4 || site.medicao.googleAds);
 const temPosts = (await getCollection('blog', ({ data }) => !data.draft)).length > 0;
 ---
 <footer class="rodape">
@@ -35,7 +36,7 @@ const temPosts = (await getCollection('blog', ({ data }) => !data.draft)).length
   <div class="wrap legal">
     <p><strong>{site.nome}</strong> · {site.especialidade} · {site.crm} · {site.rqe}</p>
     <p>O consultório não substitui o pronto-socorro em situações de urgência ou emergência. O conteúdo deste site é informativo e não substitui a avaliação individual.</p>
-    <p>© {ano} {site.nome} · <a href="/privacidade/">Política de privacidade</a></p>
+    <p>© {ano} {site.nome} · <a href="/privacidade/">Política de privacidade</a>{temMedicao && <> · <a href="#" data-cookie-prefs>Preferências de cookies</a></>}</p>
   </div>
 </footer>
 

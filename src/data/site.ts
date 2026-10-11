@@ -39,6 +39,16 @@ export const site = {
   // Os horários específicos não ficam no site: são informados na conversa de agendamento.
   // Área de atendimento priorizada: bairros com perfil de família que busca pediatria particular.
   regiao: ['Boa Viagem', 'Setúbal', 'Pina', 'Piedade', 'Candeias', 'Reserva do Paiva'],
+  // Medição (Google Analytics 4 e Google Ads). Preencher com os códigos das contas; vazio = desligado.
+  // ga4: 'G-XXXXXXXXXX' · googleAds: 'AW-123456789'
+  // conversões: 'AW-123456789/AbCdEfGhIj' (ID/rótulo que o Google Ads mostra ao criar cada conversão)
+  medicao: {
+    ga4: '',
+    googleAds: '',
+    conversaoWhatsapp: '',
+    conversaoDoctoralia: '',
+    conversaoTelefone: '',
+  },
   // O blog só entra no menu principal quando tiver pelo menos este número de posts publicados.
   blogNoMenuAPartirDe: 1,
 };

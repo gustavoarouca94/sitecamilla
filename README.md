@@ -29,6 +29,15 @@ SEO configurado: título e descrição por página, URL canônica, preview no Wh
 
 O guia visual usa a Featherly nas frases manuscritas. Coloque o arquivo em `public/fonts/featherly.woff2` e o site passa a usá-la automaticamente. Se a fonte estiver em `.otf` ou `.ttf`, converta para `.woff2`. Confirme antes se a licença permite uso na web. Sem o arquivo, o site usa a Satisfy.
 
+## Medição (Google Analytics 4 e Google Ads)
+
+Os códigos ficam em `src/data/site.ts → medicao`. Com os campos vazios, nada é carregado.
+
+- Banner de cookies (LGPD): os scripts do Google só carregam depois de "Aceitar". Quem recusa não é rastreado. O link "Preferências de cookies" no rodapé reabre o banner.
+- Eventos enviados ao GA4: `contato_whatsapp`, `contato_doctoralia`, `contato_telefone`, com a página de origem.
+- Conversões do Google Ads: preencha `conversaoWhatsapp` / `conversaoDoctoralia` / `conversaoTelefone` com o `AW-.../rótulo` de cada conversão.
+- Personalização de anúncios e remarketing ficam desligados, porque saúde é categoria sensível.
+
 ## Lançamento
 
 O site está lançado (`lancado: true` em `src/data/site.ts`). Trocar para `false` tira o site do Google (noindex + robots.txt bloqueando), útil só em manutenção.
