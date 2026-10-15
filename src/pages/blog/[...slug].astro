@@ -64,7 +64,7 @@ if (d.faq.length) {
         <h1>{d.title}</h1>
         <p class="lead">{d.description}</p>
         <p class="meta">
-          Por <a href="/sobre/">{site.nome}</a>, pediatra · {site.crm} · {site.rqe}<br />
+          Por <a href="/sobre/">{site.nome}</a> · {site.identificacao} · {site.crm} · {site.rqe}<br />
           Publicado em <time datetime={d.pubDate.toISOString()}>{fmt.format(d.pubDate)}</time>
           {d.updatedDate && <> · Revisado em <time datetime={d.updatedDate.toISOString()}>{fmt.format(d.updatedDate)}</time></>}
           · {readingTime(post)} min de leitura
@@ -93,7 +93,7 @@ if (d.faq.length) {
       <aside class="autora">
         <img src="/img/elefante.png" alt="" width="56" height="66" />
         <div>
-          <p><strong>{site.nome}</strong> é pediatra ({site.crm} · {site.rqe}), formada pela UFPE, com residência no Hospital Barão de Lucena. Atende em Piedade, pertinho de Boa Viagem.</p>
+          <p><strong>{site.nome}</strong> é médica pediatra ({site.crm} · {site.rqe}), formada pela UFPE, com residência no Hospital Barão de Lucena. Atende em Piedade, pertinho de Boa Viagem.</p>
           <p><a href="/sobre/">Conheça a Dra. Camilla</a> · <a href={whatsappLink()} target="_blank" rel="noopener">Agendar consulta</a></p>
         </div>
       </aside>

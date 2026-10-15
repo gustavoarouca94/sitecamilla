@@ -6,6 +6,8 @@ export const site = {
   nome: 'Dra. Camilla Arouca',
   nomeCurto: 'Camilla Arouca',
   especialidade: 'Pediatra',
+  // CFM 2.336/2023, art. 4: identificar como MÉDICA junto ao CRM.
+  identificacao: 'Médica pediatra',
   crm: 'CRM-PE 22927',
   rqe: 'RQE 8059',
   slogan: 'Clareza nas escolhas. Confiança no cuidado.',

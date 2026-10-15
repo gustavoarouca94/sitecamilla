@@ -77,6 +77,8 @@ Padrões que funcionam:
 - Retorno inclui exame físico; nova consulta = nova queixa, nova doença ou avaliação fora do prazo combinado.
 
 **Publicidade médica (Resolução CFM 2.336/2023)**
+- Sempre "Médica pediatra" junto ao CRM e RQE (art. 4).
+- Usar "abordagem", nunca "método", para a forma de cuidar (art. 11).
 - Sem promessa de resultado, sem "melhor pediatra", sem preço no post.
 - Sem fotos de pacientes identificáveis sem autorização.
 

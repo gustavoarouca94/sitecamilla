@@ -34,7 +34,7 @@ const temPosts = (await getCollection('blog', ({ data }) => !data.draft)).length
     </div>
   </div>
   <div class="wrap legal">
-    <p><strong>{site.nome}</strong> · {site.especialidade} · {site.crm} · {site.rqe}</p>
+    <p><strong>{site.nome}</strong> · {site.identificacao} · {site.crm} · {site.rqe}</p>
     <p>O consultório não substitui o pronto-socorro em situações de urgência ou emergência. O conteúdo deste site é informativo e não substitui a avaliação individual.</p>
     <p>© {ano} {site.nome} · <a href="/privacidade/">Política de privacidade</a>{temMedicao && <> · <a href="#" data-cookie-prefs>Preferências de cookies</a></>}</p>
   </div>

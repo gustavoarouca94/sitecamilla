@@ -28,12 +28,12 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
       <div class="hero-texto">
         <span class="eyebrow">Pediatra em Piedade · perto de Boa Viagem</span>
         <h1>Clareza nas <span class="brilho">escolhas.</span><br />Confiança no cuidado.</h1>
-        <p class="lead">Pediatria baseada em evidências que conversa com a vida real. Eu transformo ciência em orientações compreensíveis, possíveis e individualizadas para cada criança e sua família.</p>
+        <p class="lead">Pediatria baseada em evidências que conversa com a vida real. Traduzo a ciência em orientações compreensíveis, possíveis e individualizadas para cada criança e sua família.</p>
         <div class="acoes">
           <a class="btn btn-primary" href={whatsappLink()} target="_blank" rel="noopener">Agendar consulta pelo WhatsApp</a>
           <a class="btn btn-ghost" href="/consultas/">Conhecer as consultas</a>
         </div>
-        <p class="apoio">{site.nome} · Pediatra · Piedade, Jaboatão dos Guararapes<br />{site.crm} · {site.rqe}</p>
+        <p class="apoio">{site.nome} · Piedade, Jaboatão dos Guararapes<br />{site.identificacao} · {site.crm} · {site.rqe}</p>
       </div>
       <div class="hero-foto">
         <div class="arch"><Image src={retrato} alt="Dra. Camilla Arouca, pediatra, sorrindo em um jardim" widths={[400, 700, 1000]} sizes="(min-width: 860px) 460px, 90vw" loading="eager" fetchpriority="high" /></div>
@@ -44,14 +44,14 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   <!-- b. Faixa segunda a sábado -->
   <FaixaSabado />
 
-  <!-- c. Método AME -->
+  <!-- c. Abordagem AME -->
   <section class="section">
     <div class="wrap">
       <div class="split ame">
         <div class="arch ame-foto"><Image src={olhar} alt="Dra. Camilla Arouca olhando para o alto, entre as árvores" widths={[400, 700]} sizes="(min-width: 860px) 360px, 80vw" /></div>
         <div>
           <span class="eyebrow">Como eu cuido</span>
-          <h2>Método AME: Apoio às Melhores Escolhas possíveis.</h2>
+          <h2>Abordagem AME: Apoio às Melhores Escolhas possíveis.</h2>
           <p class="lead">Eu não acredito que meu papel seja oferecer todas as respostas. Acredito que seja fortalecer a família para fazer as melhores perguntas e, juntos, encontrarmos o melhor caminho para cada criança.</p>
           <p class="tres">Três ideias guiam cada consulta:</p>
         </div>
